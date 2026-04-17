@@ -1,4 +1,7 @@
 onclick = (e) => {
+
+  if(e.target.tagName == "BUTTON" || e.target.tagName == "input") return;
+  
   var x = e.layerX - a.offsetLeft, y = e.layerY - a.offsetTop;
   var radius;
   

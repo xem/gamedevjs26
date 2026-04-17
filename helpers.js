@@ -107,13 +107,13 @@ parselevel = () => {
   cogs = [];
   
   if(level.yellow){
-    cogs.push({size: 5, fixed: 1, color:"yellow", rotation: 1, x: level.yellow[0], y: level.yellow[1], radius1: 95, radius2: 105, neighbours: [], grounded: 0 });
+    cogs.push({size: 5, fixed: 1, color:"yellow", rotation: 1, x: level.yellow[0], y: level.yellow[1], radius1: 95, radius2: 105, neighbours: [], grounded: 1 });
   }
   else { alert("no yellow") }
   
   if(level.blue){
     for(var i in level.blue){
-      cogs.push({size: 3, fixed: 1, color:"blue", rotation: 0, x: level.blue[i][0], y: level.blue[i][1], radius1: 55, radius2: 65, neighbours: [], grounded: 0 });
+      cogs.push({size: 3, fixed: 1, color:"blue", rotation: 0, x: level.blue[i][0], y: level.blue[i][1], radius1: 55, radius2: 65, neighbours: [], grounded: 1 });
     }
   }
   else { alert("no blue") }
@@ -136,7 +136,7 @@ cogstouch = (x1, y1, inner1, x2, y2, inner2, debug) => {
   const dy = y2 - y1;
   const distSq = dx*dx + dy*dy;
   const innerradii = inner1 + inner2;
-  const outerradii = inner1 + inner2 + 10;
+  const outerradii = inner1 + inner2 + 15;
   if(debug){
     console.log(x1, y1, inner1, x2, y2, inner2);
     console.log(dx, dy, distSq, innerradii, outerradii, innerradii * innerradii, outerradii * outerradii);
@@ -152,6 +152,13 @@ cogstouchdebug = (i, j) => {
 gamecollision = (x,y,radius) => {
   for(var i in cogs){
     if(circlescollide(x,y,radius, cogs[i].x, cogs[i].y, cogs[i].radius1)){
+      return 1;
+    }
+  }
+  if(level.red){
+    c.beginPath();
+    c.rect(level.red[0],level.red[1],level.red[2],level.red[3]);
+    if(c.isPointInPath(x,y)){
       return 1;
     }
   }

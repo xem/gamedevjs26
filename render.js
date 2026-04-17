@@ -29,57 +29,29 @@ render = () => {
   else if(page == 1){
     
     ingameframes++;
+    
+    // red
+    if(level.red.length == 4){
+      drawred();
+    }
   
     // yellow
     if(level.yellow.length){
-      drawcog(level.yellow[0],level.yellow[1],-yellowangle,5, 1);
+      drawcog(level.yellow[0],level.yellow[1],cogs[0].rotation == 1 ? -yellowangle : 0,5, 1);
     }
     
     // blue
     if(level.blue.length){
-      for(var i in level.blue){
-        drawcog(level.blue[i][0],level.blue[i][1],0,3, 2);
+      for(var i in cogs){
+        if(cogs[i].color == "blue"){
+          drawcog(cogs[i].x,cogs[i].y,(cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, 3, 2);
+        }
       }
     }
-    
-    /*// cog 1
-    if(level.cogs1.length){
-      for(var i in level.cogs1){
-        //drawcog(level.cogs1[i][0],level.cogs1[i][1],0,1,0);
-      }
-    }
-    
-    // cog 2
-    if(level.cogs2.length){
-      for(var i in level.cogs2){
-        //drawcog(level.cogs2[i][0],level.cogs2[i][1],0,2,0);
-      }
-    }
-    
-    // cog 3
-    if(level.cogs3.length){
-      for(var i in level.cogs3){
-        //drawcog(level.cogs3[i][0],level.cogs3[i][1],0,3,0);
-      }
-    }
-    
-    // cog 4
-    if(level.cogs4.length){
-      for(var i in level.cogs4){
-        //drawcog(level.cogs4[i][0],level.cogs4[i][1],0,4,0);
-      }
-    }
-    
-    // cog 5
-    if(level.cogs5.length){
-      for(var i in level.cogs5){
-        //drawcog(level.cogs5[i][0],level.cogs5[i][1],0,5,0);
-      }
-    }*/
     
     for(var i in cogs){
       if(!cogs[i].fixed){
-        drawcog(cogs[i].x, cogs[i].y, 0, cogs[i].size, 0);
+        drawcog(cogs[i].x, cogs[i].y, (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, cogs[i].size, 0);
       }
     }
     
@@ -97,11 +69,13 @@ render = () => {
       drawcog(level.cogs4[level.cogs4.length-1][0],level.cogs4[level.cogs4.length-1][1],0,4,level.cogs4[level.cogs4.length-1][3] ? 4 : 0);
     }
     if(placing == "5") {
-      drawcog(level.cogs5[level.cogs5.length-1][0],level.cogs5[level.cogs5.length-1][1],0,5,level.cogs5[level.cogs5.length-1][3] ? 4 : 0);
+      drawcog(
+        level.cogs5[level.cogs5.length-1][0],level.cogs5[level.cogs5.length-1][1],0,5,level.cogs5[level.cogs5.length-1][3] ? 4 : 0);
     }
     
     // bottom
     c.fillStyle = "#000";
+    c.strokeStyle = "#000";
     c.lineWidth = 10;
     c.fillRect(0,450,320,50);
     c.rect(0,0,320,500);
