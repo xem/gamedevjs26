@@ -18,7 +18,7 @@ drawcog = (x, y, angle = 0, size = 1, type = 0, scale = 1) => {
   c.closePath();
   
   c.beginPath();
-  //c.arc(0, 0, 5, 0, 7);
+  c.arc(0, 0, 5, 0, 7);
   c.fillStyle = "#000";
   c.fill();
   c.closePath();
@@ -49,34 +49,74 @@ drawred = () => {
 }
 
 // draw pink zone
+// pink = [x, y, w, h, cx, cy, x2, y2, w2, h2, cx2, cy2]
 drawpink = () => {
-  c.beginPath();
-  c.fillStyle = "#e7e";
-  c.lineWidth = 3;
-  c.strokeStyle = "purple";
-  c.rect(level.pink[0],level.pink[1],level.pink[2],level.pink[3]);
-  c.fill();
-  c.stroke();
-  c.closePath();
-  if(level.pink.length > 4){
+  
+  if(level.pinkposition == 0){
+    c.save();
+    c.setTransform(1, 0, 0, 1, 0, 0);
     c.beginPath();
     c.fillStyle = "#e7e";
     c.lineWidth = 3;
     c.strokeStyle = "purple";
-    c.arc(level.pink[4], level.pink[5], 10, 0, 7);
+    c.rect(level.pink[0],level.pink[1],level.pink[2],level.pink[3]);
     c.fill();
     c.stroke();
     c.closePath();
-    
+    if(level.pink.length > 6){
+      c.beginPath();
+      c.fillStyle = "#e7e";
+      c.lineWidth = 3;
+      c.strokeStyle = "purple";
+      c.arc(level.pink[10], level.pink[11], 6, 0, 7);
+      c.fill();
+      c.stroke();
+      c.closePath();
+      
+      c.beginPath();
+      c.fillStyle = "#e7e";
+      c.lineWidth = 3;
+      c.strokeStyle = "purple";
+      c.moveTo(level.pink[10], level.pink[11]);
+      c.lineTo(level.pink[4], level.pink[5]);
+      c.fill();
+      c.stroke();
+      c.closePath();
+    }
+    c.restore();
+  }
+  else {
+    c.save();
+    c.setTransform(1, 0, 0, 1, 0, 0);
     c.beginPath();
     c.fillStyle = "#e7e";
     c.lineWidth = 3;
     c.strokeStyle = "purple";
-    c.moveTo(level.pink[4], level.pink[5]);
-    c.lineTo(level.pink[0] + (level.pink[2])/2, level.pink[1] + (level.pink[3])/2);
+    c.rect(level.pink[0+6],level.pink[1+6],level.pink[2+6],level.pink[3+6]);
     c.fill();
     c.stroke();
     c.closePath();
+    if(level.pink.length > 6){
+      c.beginPath();
+      c.fillStyle = "#e7e";
+      c.lineWidth = 3;
+      c.strokeStyle = "purple";
+      c.arc(level.pink[10-6], level.pink[11-6], 6, 0, 7);
+      c.fill();
+      c.stroke();
+      c.closePath();
+      
+      c.beginPath();
+      c.fillStyle = "#e7e";
+      c.lineWidth = 3;
+      c.strokeStyle = "purple";
+      c.moveTo(level.pink[10-6], level.pink[11-6]);
+      c.lineTo(level.pink[4+6], level.pink[5+6]);
+      c.fill();
+      c.stroke();
+      c.closePath();
+    }
+    c.restore();
   }
 }
 
@@ -84,6 +124,10 @@ drawpink = () => {
 parselevel = () => {
   
   placing = 0;
+  exit1.classList.add("hidden");
+  next1.classList.add("hidden");
+  reset1.classList.add("hidden");
+  buttons.classList.add("hidden");
   
   // reset + string to int
   level.n1 = +level.n1;
@@ -101,6 +145,8 @@ parselevel = () => {
   level.placed3 = 0,
   level.placed4 = 0,
   level.placed5 = 0;
+  
+  level.pinkposition = 0;
   
   // create cogs array
   // cogs = [{size: 1/2/3/4/5, fixed: 0/1, color:grey/yellow/blue, rotation: 0/1/-1, x, y, radius1, radius2, neighbours: [], grounded: 0 }]
@@ -138,8 +184,8 @@ cogstouch = (x1, y1, inner1, x2, y2, inner2, debug) => {
   const innerradii = inner1 + inner2;
   const outerradii = inner1 + inner2 + 15;
   if(debug){
-    console.log(x1, y1, inner1, x2, y2, inner2);
-    console.log(dx, dy, distSq, innerradii, outerradii, innerradii * innerradii, outerradii * outerradii);
+    //console.log(x1, y1, inner1, x2, y2, inner2);
+    //console.log(dx, dy, distSq, innerradii, outerradii, innerradii * innerradii, outerradii * outerradii);
   }
   return (distSq < (outerradii * outerradii));
 }

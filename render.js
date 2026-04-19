@@ -21,8 +21,10 @@ render = () => {
     c.fillText("A tribute to 'Geared' for GamedevJS 2026", 20, 490);
     c.strokeStyle = "#000";
     c.lineWidth = 10;
+    c.beginPath();
     c.rect(0,0,320,500);
     c.stroke();
+    c.closePath();
   }
   
   // game
@@ -33,6 +35,11 @@ render = () => {
     // red
     if(level.red.length == 4){
       drawred();
+    }
+    
+    // pink
+    if(level.pink.length == 12){
+      drawpink();
     }
   
     // yellow
@@ -78,8 +85,10 @@ render = () => {
     c.strokeStyle = "#000";
     c.lineWidth = 10;
     c.fillRect(0,450,320,50);
+    c.beginPath();
     c.rect(0,0,320,500);
     c.stroke();
+    c.closePath(),
     c.font = "bold 33px Calibri, Arial, sans-serif";
     
     // boxes
@@ -104,6 +113,40 @@ render = () => {
     c.font = "bold 15px Calibri, Arial, sans-serif";
     c.fillText("RESET", 231, 480);
     c.fillText("EXIT", 281, 480);
+    
+    if(blocked){
+      c.fillStyle = "#fff";
+      c.font = "bold 60px Calibri, Arial, sans-serif";
+      c.fillText("COG-", 85-3, 200-3);
+      c.fillText("COG-", 85-3, 200+3);
+      c.fillText("COG-", 85+3, 200-3);
+      c.fillText("COG-", 85+3, 200+3);
+      c.fillText("BLOCKED!", 25-3, 250-3);
+      c.fillText("BLOCKED!", 25-3, 250+3);
+      c.fillText("BLOCKED!", 25+3, 250-3);
+      c.fillText("BLOCKED!", 25+3, 250+3);
+      c.fillStyle = "#000";
+      c.font = "bold 60px Calibri, Arial, sans-serif";
+      c.fillText("COG-", 85, 200);
+      c.fillText("BLOCKED!", 25, 250);
+    }
+    
+    if(won){
+      c.fillStyle = "#fff";
+      c.font = "bold 45px Calibri, Arial, sans-serif";
+      c.fillText("COG-", 100-3, 200-3);
+      c.fillText("COG-", 100+3, 200-3);
+      c.fillText("COG-", 100-3, 200+3);
+      c.fillText("COG-", 100+3, 200+3);
+      c.fillText("RATULATIONS!", 20+3, 250+3);
+      c.fillText("RATULATIONS!", 20-3, 250+3);
+      c.fillText("RATULATIONS!", 20+3, 250-3);
+      c.fillText("RATULATIONS!", 20-3, 250-3);
+      c.fillStyle = "#000";
+      c.font = "bold 45px Calibri, Arial, sans-serif";
+      c.fillText("COG-", 100, 200);
+      c.fillText("RATULATIONS!", 20, 250);
+    }
 
   }
   
@@ -137,10 +180,12 @@ render = () => {
     c.fillStyle = "#000";
     c.fillRect(0,450,320,50);
     
+    c.beginPath();
     c.strokeStyle = "#000";
     c.lineWidth = 10;
     c.rect(0,0,320,500);
     c.stroke();
+    c.closePath();
   }
   
   // levels

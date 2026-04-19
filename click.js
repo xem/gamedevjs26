@@ -53,6 +53,10 @@ onclick = (e) => {
     c.closePath();
     if(c.isPointInPath(x,y)){
       page = back;
+      exit1.classList.add("hidden");
+      next1.classList.add("hidden");
+      reset1.classList.add("hidden");
+      buttons.classList.add("hidden");
     }
     
     // place cog 1
@@ -63,7 +67,7 @@ onclick = (e) => {
       if(x > 320 - radius) x = 320 - radius;
       if(y > 450 - radius) y = 450 - radius;
       if(!gamecollision(x,y,15)){
-        console.log(x, y);
+        //console.log(x, y);
         cogs.push({size: 1, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 15, radius2: 25, neighbours: [], grounded: 0 });
         level.cogs1[level.cogs1.length-1] = [x, y];
         placing = 0;
@@ -212,20 +216,35 @@ onclick = (e) => {
           placing = 0;
         }
       }
-      if(placing == "pink") { 
+      
+      // pink
+      if(placing == "pink") { // pink = [x, y, w, h, cx, cy, x2, y2, w2, h2, cx2, cy2]
+      
+        // click 1
         if(pinkclick == 0){
-          level.pink = [x, y];
+          level.pink = [x, y]; // x, y
           pinkclick++;
         }
+        
+        // click 2
         else if(pinkclick == 1){
-          level.pink[2] = (x - level.pink[0]);
-          level.pink[3] = (y - level.pink[1]);
-
+          level.pink[2] = (x - level.pink[0]); // w
+          level.pink[3] = (y - level.pink[1]); // h
+          level.pink[4] = (level.pink[0] + level.pink[2] / 2); // cx
+          level.pink[5] = (level.pink[1] + level.pink[3] / 2); // cy
+          console.log(level.pink[0],level.pink[1],level.pink[2],level.pink[3],level.pink[4],level.pink[5]);
           pinkclick++;
         }
+        
+        // click 3
         else if(pinkclick == 2){
-          level.pink[4] = (x);
-          level.pink[5] = (y);
+          console.log(level.pink[0],level.pink[1],level.pink[2],level.pink[3],level.pink[4],level.pink[5]);
+          level.pink[6] = x - level.pink[2] / 2; // x2
+          level.pink[7] = y - level.pink[3] / 2; // y2
+          level.pink[8] = level.pink[2]; // w2
+          level.pink[9] = level.pink[3]; // h2
+          level.pink[10] = x; // cx2
+          level.pink[11] = y; // cy2
           placing = 0;
           pinkclick = 0;
         }
@@ -234,4 +253,20 @@ onclick = (e) => {
   }
   
   return;
+}
+
+reset1.onclick = () => {
+  parselevel();
+}
+
+next1.onclick = () => {
+  // todo
+}
+
+exit1.onclick = () => {
+  page = back;
+  exit1.classList.add("hidden");
+  next1.classList.add("hidden");
+  reset1.classList.add("hidden");
+  buttons.classList.add("hidden");
 }

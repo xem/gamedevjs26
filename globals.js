@@ -52,3 +52,7 @@ page = 1;
 
 
 var cogs = []; // [{size: 1/2/3/4/5, fixed: 0/1, color:grey/yellow/blue, rotation: 0/1/-1, x, y, radius1: inner, radius2: outer, neighbours: [], grounded: 0 }]
+
+blocked = 0;
+won = 0;
+currentlevel = localStorage["cogs_currentlevel"] || 0;

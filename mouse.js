@@ -116,8 +116,8 @@ onmousemove = (e) => {
     }
     
     if(placing == "pink" && pinkclick == 2){
-      level.pink[4] = x;
-      level.pink[5] = y;
+      level.pink[10] = x;
+      level.pink[11] = y;
     }
     
     checkeditorcollisions();

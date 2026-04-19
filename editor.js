@@ -16,7 +16,12 @@ btest.onclick = () => {
   back = 2;
   page = 1;
   editor.classList.add("hidden");
-  parselevel();
+  if(cogs.length < 2){
+    alert("Levels require at least one yellow cog and one blue cog");
+  }
+  else {
+    parselevel();
+  }
 }
 
 breset.onclick = reseteditor = () => {

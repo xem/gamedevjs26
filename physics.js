@@ -27,8 +27,8 @@ physics = () => {
             cogs[i].neighbours.push(j);
 
             if(cogs[i].color == "blue"){
-              console.log(i + " touches " + j);
-              console.log(cogs[i].neighbours);
+              //console.log(i + " touches " + j);
+              //console.log(cogs[i].neighbours);
             }
             
             // if grey and colliding and higher than neighbour:
@@ -71,9 +71,31 @@ physics = () => {
         }
         if(globalneighbourangle == 99 && cogs[i].neighbours.includes(0)){
           cogs[0].rotation = 0;
+          blocked = 1;
+          buttons.classList.remove("hidden");
+          reset1.classList.remove("hidden");
         }
-        //if(i == 3) console.log(globalneighbourangle);
+        else {
+          blocked = 0;
+        }
         cogs[i].rotation = -globalneighbourangle;
+      }
+    }
+    
+    // check victory
+    won = 1;
+    for(i in cogs){
+      if(cogs[i].color == "blue" && cogs[i].rotation == 0){
+        won = 0;
+      }
+    }
+    if(won == 1){
+      buttons.classList.remove("hidden");
+      if(back == 2){
+        exit1.classList.remove("hidden");
+      }
+      else {
+        next1.classList.remove("hidden");
       }
     }
   }
