@@ -1,6 +1,6 @@
 // draw cog
 // size: 1, 2, 3, 4, 5
-// radius: 15, 35, 55, 75, 95
+// radius: 15, 35, 55, 75, 105
 // teeth: 6, 12, 18, 24, 30
 // type: 0 grey, 1 yellow, 2 blue, 3 black, 4 red
 // speed: 1, 1/2, 1/3, 1/4, 1/5
@@ -10,7 +10,7 @@ drawcog = (x, y, angle = 0, size = 1, type = 0, scale = 1) => {
   c.translate(x, y);
   c.lineWidth = 3;
   c.scale(scale, scale);
-  c.arc(0, 0, 15 + (size - 1) * 20, 0, 7);
+  c.arc(0, 0, 15 + (size - 1) * 20 + (size == 5 ? 5 : 0), 0, 7);
   c.fillStyle = ["#ccc", "yellow", "#2ad","black", "red"][type];
   c.strokeStyle = "#000";
   c.fill();
@@ -21,7 +21,9 @@ drawcog = (x, y, angle = 0, size = 1, type = 0, scale = 1) => {
     c.fillStyle = "#000";
     c.font = "bold 20px calibri, arial, sans-serif";
     c.textAlign = "center";
-    c.fillText("LEVEL " + (currentlevel), 0, -30);
+    c.fillText("LEVEL " + (currentlevel), 0, -72);
+    c.rotate(Math.PI);
+    c.fillText("LEVEL " + (currentlevel), 0, -72);
     c.restore();
   }
   c.closePath();
@@ -36,7 +38,7 @@ drawcog = (x, y, angle = 0, size = 1, type = 0, scale = 1) => {
   for(var i = 0; i < teeth; i++){
     c.save();
     c.rotate((2 * Math.PI / teeth) * i + (angle * 1/size) / 100);
-    c.translate(0, -25 - (size - 1) * 20);
+    c.translate(0, -25 - (size - 1) * 20 - (size == 5 ? 5 : 0));
     c.fillRect(-6, -3, 12, 12);
     c.fillStyle = c.fillStyle = ["#ccc", "yellow", "#2ad", "black", "red"][type];
     c.fillRect(-3, 0, 6, 12);
@@ -193,7 +195,7 @@ circlescollide = (x1, y1, r1, x2, y2, r2) => {
   const dx = x2 - x1;
   const dy = y2 - y1;
   const distSq = dx*dx + dy*dy;
-  const radii = r1 + r2 + 4;
+  const radii = r1 + r2 + 6;
   return distSq <= radii * radii;
 }
 

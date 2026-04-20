@@ -76,12 +76,12 @@ onmousemove = (e) => {
     
     // cog 5
     else if(placing == "5"){
-      radius = 105;
+      radius = 110;
       if(x < radius) x = radius;
       if(y < radius) y = radius;
       if(x > 320 - radius) x = 320 - radius;
       if(y > 450 - radius) y = 450 - radius;
-      if(gamecollision(x,y,95)){
+      if(gamecollision(x,y,110)){
         level.cogs5[level.cogs5.length-1] = [x, y, 1, 1]; // x, y, tmp, colliding
       }
       else {

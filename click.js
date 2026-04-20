@@ -64,14 +64,14 @@ onclick = (e) => {
       if(pinkposition == 0){
         c.beginPath();
         c.rect(level.pink[0],level.pink[1],level.pink[2],level.pink[3]);
-        if(c.isPointInPath(x,y)){
+        if(c.isPointInPath(x,y) && placing == 0){
           pinkposition = 1;
         }
       }
       else {
         c.beginPath();
         c.rect(level.pink[6],level.pink[7],level.pink[8],level.pink[9]);
-        if(c.isPointInPath(x,y)){
+        if(c.isPointInPath(x,y) && placing == 0){
           pinkposition = 0;
         }
       }
@@ -154,13 +154,13 @@ onclick = (e) => {
     
     // place cog 5
     else if(placing == "5"){
-      radius = 105;
+      radius = 110;
       if(x < radius) x = radius;
       if(y < radius) y = radius;
       if(x > 320 - radius) x = 320 - radius;
       if(y > 450 - radius) y = 450 - radius;
-      if(!gamecollision(x,y,95)){
-        cogs.push({size: 5, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 95, radius2: 105, neighbours: [], grounded: 0 });
+      if(!gamecollision(x,y,110)){
+        cogs.push({size: 5, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 100, radius2: 110, neighbours: [], grounded: 0 });
         level.cogs5[level.cogs5.length-1] = [x, y];
         placing = 0;
       }

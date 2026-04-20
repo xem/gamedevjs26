@@ -1,5 +1,5 @@
 // Globals 
-page = 2;         // 0 menu, 1 ingame/test, 2 editor, 3 level select
+page = 0;         // 0 menu, 1 ingame/test, 2 editor, 3 level select
 back = 2;         // exit page
 currentlevel = 1; // 1-150
 c = 0;            // context2d
@@ -43,7 +43,7 @@ currentlevel = localStorage["cogs_currentlevel"] || 1;
 
 // tmp
 for(i = 1; i < 150; i++){
-  tmp.innerHTML += "<button onclick='bg("+i+")'>"+i+"</button>";
+  //tmp.innerHTML += "<button onclick='bg("+i+")'>"+i+"</button>";
 }
 
 bg = (i) => {
