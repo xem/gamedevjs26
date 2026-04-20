@@ -238,20 +238,30 @@ onclick = (e) => {
   // editor
   else if(page == 2){
     if(!collision && placing != 0){
+
+      // yellow
       if(placing == "yellow") { 
         placing = 0;
       }
+
+      // blue
       if(placing == "blue") { 
         placing = 0;
       }
-      if(placing == "red") { 
-        if(level.red.length == 0){
-          level.red = [x, y];
+
+      // red
+      if(placing == "red") {
+        if(redclick == 0){
+          level.red.push([x, y]);
+          redclick++;
+          //console.log(level.red, redclick);
         }
-        else if(level.red.length == 2 || level.red.length == 4){
-          level.red[2] = (x - level.red[0]);
-          level.red[3] = (y - level.red[1]);
+        else if(redclick == 1){
+          level.red[level.red.length-1][2] = (x - level.red[level.red.length-1][0]);
+          level.red[level.red.length-1][3] = (y - level.red[level.red.length-1][1]);
           placing = 0;
+          redclick = 0;
+          //console.log(level.red, redclick);
         }
       }
       

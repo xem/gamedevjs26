@@ -15,9 +15,12 @@ oninput = onchange = () => {
 btest.onclick = () => {
   back = 2;
   page = 1;
+  parselevel();
   editor.classList.add("hidden");
   if(cogs.length < 2){
     alert("Levels require at least one yellow cog and one blue cog");
+    back = 2;
+    page = 2;
   }
   else {
     parselevel();
@@ -87,7 +90,6 @@ bblue3.onclick = () => {
 
 bred.onclick = () => {
   placing = "red";
-  level.red = [];
 }
 
 bpink.onclick = () => {

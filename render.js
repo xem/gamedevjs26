@@ -57,7 +57,7 @@ render = () => {
     }
     
     // red
-    if(level.red.length == 4){
+    if(level.red.length > 0){
       drawred();
     }
     
@@ -208,7 +208,7 @@ render = () => {
     editor.classList.remove("hidden");
 
     // red
-    if(level.red.length == 4){
+    if(level.red.length > 0){
       drawred();
     }
     

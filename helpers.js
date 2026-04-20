@@ -15,7 +15,7 @@ drawcog = (x, y, angle = 0, size = 1, type = 0, scale = 1) => {
   c.strokeStyle = "#000";
   c.fill();
   c.stroke();
-  if(type == 1 && page == 1){
+  if(type == 1 && page == 1 && back == 0){
     c.save();
     c.rotate(-(angle * 1/size) / 2000);
     c.fillStyle = "#000";
@@ -51,9 +51,11 @@ drawred = () => {
   c.fillStyle = "pink";
   c.lineWidth = 3;
   c.strokeStyle = "red";
-  c.rect(level.red[0],level.red[1],level.red[2],level.red[3]);
-  c.fill();
-  c.stroke();
+  for(var i in level.red){
+    c.rect(level.red[i][0],level.red[i][1],level.red[i][2],level.red[i][3]);
+    c.fill();
+    c.stroke();
+  }
   c.closePath();
 }
 
@@ -210,19 +212,26 @@ cogstouch = (x1, y1, inner1, x2, y2, inner2, debug) => {
 
 // check if a grey cog to place is colliding with anything else
 gamecollision = (x,y,radius) => {
+  
+  // cog-cog
   for(var i in cogs){
     if(circlescollide(x,y,radius, cogs[i].x, cogs[i].y, cogs[i].radius1)){
       return 1;
     }
   }
+  
+  // cog-red
   if(level.red){
-    c.beginPath();
-    c.rect(level.red[0],level.red[1],level.red[2],level.red[3]);
-    if(c.isPointInPath(x,y)){
-      return 1;
+    for(var i in level.red){
+      c.beginPath();
+      c.rect(level.red[i][0],level.red[i][1],level.red[i][2],level.red[i][3]);
+      if(c.isPointInPath(x,y)){
+        return 1;
+      }
     }
   }
   
+  // cog-pink
   if(level.pink){
     if(pinkposition == 0){
       c.beginPath();

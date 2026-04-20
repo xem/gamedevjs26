@@ -23,6 +23,7 @@ level = {
 }
 placing = 0;
 pinkclick = 0;
+redclick = 0;
 pinkposition = 0;
 collision = 0;
 back = 0;

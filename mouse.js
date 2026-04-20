@@ -105,9 +105,9 @@ onmousemove = (e) => {
     }
     
     // red
-    if(placing == "red" && level.red.length >= 2){
-      level.red[2] = x - level.red[0];
-      level.red[3] = y - level.red[1];
+    if(placing == "red" && level.red.length > 0 && level.red[level.red.length-1].length >= 2 && redclick == 1){
+      level.red[level.red.length-1][2] = x - level.red[level.red.length-1][0];
+      level.red[level.red.length-1][3] = y - level.red[level.red.length-1][1];
     }
     
     // pink
