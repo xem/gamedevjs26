@@ -1,6 +1,6 @@
 onclick = (e) => {
 
-  if(e.target.tagName == "BUTTON" || e.target.tagName == "input") return;
+  if(e.target.tagName == "BUTTON" || e.target.tagName == "INPUT") return;
   
   var x = e.layerX - a.offsetLeft, y = e.layerY - a.offsetTop;
   var radius;
@@ -59,6 +59,24 @@ onclick = (e) => {
       buttons.classList.add("hidden");
     }
     
+    // move pink
+    if(level.pink){
+      if(pinkposition == 0){
+        c.beginPath();
+        c.rect(level.pink[0],level.pink[1],level.pink[2],level.pink[3]);
+        if(c.isPointInPath(x,y)){
+          pinkposition = 1;
+        }
+      }
+      else {
+        c.beginPath();
+        c.rect(level.pink[6],level.pink[7],level.pink[8],level.pink[9]);
+        if(c.isPointInPath(x,y)){
+          pinkposition = 0;
+        }
+      }
+    }
+    
     // place cog 1
     if(placing == "1"){
       radius = 25;
@@ -74,6 +92,10 @@ onclick = (e) => {
         //console.log(cogs[cogs.length-1]);
         //console.log(level.cogs1[level.cogs1.length-1]);
       }
+      else {
+        placing = 0;
+        level.placed1 --;
+      }
     }
     
     // place cog 2
@@ -87,6 +109,10 @@ onclick = (e) => {
         cogs.push({size: 2, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 35, radius2: 45, neighbours: [], grounded: 0 });
         level.cogs2[level.cogs2.length-1] = [x, y];
         placing = 0;
+      }
+      else {
+        placing = 0;
+        level.placed2 --;
       }
     }
     
@@ -102,6 +128,10 @@ onclick = (e) => {
         level.cogs3[level.cogs3.length-1] = [x, y];
         placing = 0;
       }
+      else {
+        placing = 0;
+        level.placed3 --;
+      }
     }
     
     // place cog 4
@@ -116,6 +146,10 @@ onclick = (e) => {
         level.cogs4[level.cogs4.length-1] = [x, y];
         placing = 0;
       }
+      else {
+        placing = 0;
+        level.placed4 --;
+      }
     }
     
     // place cog 5
@@ -129,6 +163,10 @@ onclick = (e) => {
         cogs.push({size: 5, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 95, radius2: 105, neighbours: [], grounded: 0 });
         level.cogs5[level.cogs5.length-1] = [x, y];
         placing = 0;
+      }
+      else {
+        placing = 0;
+        level.placed5 --;
       }
     }
     
@@ -232,13 +270,13 @@ onclick = (e) => {
           level.pink[3] = (y - level.pink[1]); // h
           level.pink[4] = (level.pink[0] + level.pink[2] / 2); // cx
           level.pink[5] = (level.pink[1] + level.pink[3] / 2); // cy
-          console.log(level.pink[0],level.pink[1],level.pink[2],level.pink[3],level.pink[4],level.pink[5]);
+          //console.log(level.pink[0],level.pink[1],level.pink[2],level.pink[3],level.pink[4],level.pink[5]);
           pinkclick++;
         }
         
         // click 3
         else if(pinkclick == 2){
-          console.log(level.pink[0],level.pink[1],level.pink[2],level.pink[3],level.pink[4],level.pink[5]);
+          //console.log(level.pink[0],level.pink[1],level.pink[2],level.pink[3],level.pink[4],level.pink[5]);
           level.pink[6] = x - level.pink[2] / 2; // x2
           level.pink[7] = y - level.pink[3] / 2; // y2
           level.pink[8] = level.pink[2]; // w2
@@ -260,7 +298,9 @@ reset1.onclick = () => {
 }
 
 next1.onclick = () => {
-  // todo
+  currentlevel++;
+  localStorage["cogs_currentlevel"] = currentlevel;
+  parselevel();
 }
 
 exit1.onclick = () => {
@@ -269,4 +309,9 @@ exit1.onclick = () => {
   next1.classList.add("hidden");
   reset1.classList.add("hidden");
   buttons.classList.add("hidden");
+  pinkposition = 0;
+  blocked = 0;
+  won = 0;
+  messageframes = 0;
+  blockedframes = 0;
 }

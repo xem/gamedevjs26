@@ -7,29 +7,37 @@
   4 <input type=number id=s4 value=0 min=0 max=10>
   5 <input type=number id=s5 value=0 min=0 max=10>
   <br>
-  <button id=byellow>yellow</button>
-  <button id=bblue>blue</button>
-  <button id=bred>red</button>
-  <button id=bpink>pink</button> - 
+  <button id=byellow style="background:yellow"> </button>
+  <button id=bblue1 style="background:#2ad">S</button>
+  <button id=bblue2 style="background:#2ad">M</button>
+  <button id=bblue3 style="background:#2ad">L</button>
+  <button id=bred style="background:red"> </button>
+  <button id=bpink style="background:pink"> </button> - 
   <button id=btest>test</button>
   <button id=breset>reset</button>
   <button id=bshare>share</button>
   <button id=bexit>exit</button>
 </div>
+<div id=bottom></div>
 <div id=buttons class=hidden>
   <button id=reset1 class=hidden>RESET</button>
   <button id=next1 class=hidden>NEXT</button>
   <button id=exit1 class=hidden>EXIT</button>
-</div><style>
-canvas { cursor: pointer; background: #edeeef }
+</div>
+<div id=tmp>
+</div>
+<style>
+canvas { cursor: pointer; backgroundx: #edeeef; }
 body { text-align: center }
 input { width: 25px }
 #editor { line-height: 22px; margin-top: -52px; color: #fff; font-family: calibri, arial, sans-serif; }
-#buttons { line-height: 22px; margin-top: -220px; }
-button { padding: 2px; font-family: calibri, arial, sans-serif; }
+#editor button { min-width: 22px; height: 23px; vertical-align: top; }
+#buttons { line-height: 22px; margin-top: -220px; height: 220px}
+button { padding: 2px; font-family: calibri, arial, sans-serif; cursor: pointer; }
 input { padding: 0; font-family: calibri, arial, sans-serif; }
 .hidden { display: none }
-#reset1, #next1, #exit1 { width: 120px; border: 2px solid #000; background: #ddd; font: bold 30px calibri, arial, sans-serif; }
+#reset1, #next1, #exit1 { width: 120px; border: 4px solid #000; background: #ddd; font: bold 30px calibri, arial, sans-serif; }
+#bottom { width: 320px; height: 40px; margin: 10px auto; }
 </style>
 
 <script src=globals.js></script>
@@ -39,6 +47,7 @@ input { padding: 0; font-family: calibri, arial, sans-serif; }
 <script src=mouse.js></script>
 <script src=editor.js></script>
 <script src=physics.js></script>
+<script src=levels.js></script>
 <script>
 
 // Start

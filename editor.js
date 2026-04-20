@@ -44,7 +44,7 @@ breset.onclick = reseteditor = () => {
 }
 
 bshare.onclick = () => {
-  alert(JSON.stringify(level));
+  prompt("Share level", JSON.stringify(level));
 }
 
 bexit.onclick = () => {
@@ -55,13 +55,33 @@ byellow.onclick = () => {
   placing = "yellow";
 }
 
-bblue.onclick = () => {
+bblue1.onclick = () => {
   placing = "blue";
   if(level.blue.length > 0 && level.blue[level.blue.length-1][0] == 999){
     // use the last blue slot if empty
   }
   else {
-    level.blue.push([999,999]); // new one
+    level.blue.push([999,999,15]); // new one
+  }
+}
+
+bblue2.onclick = () => {
+  placing = "blue";
+  if(level.blue.length > 0 && level.blue[level.blue.length-1][0] == 999){
+    // use the last blue slot if empty
+  }
+  else {
+    level.blue.push([999,999,35]); // new one
+  }
+}
+
+bblue3.onclick = () => {
+  placing = "blue";
+  if(level.blue.length > 0 && level.blue[level.blue.length-1][0] == 999){
+    // use the last blue slot if empty
+  }
+  else {
+    level.blue.push([999,999,55]); // new one
   }
 }
 
@@ -77,12 +97,12 @@ bpink.onclick = () => {
 }
 
 checkeditorcollisions = () => {
-  // blue radius is 55
+  // blue radius is 15/35/55
   // yellow radius is 95
   collision = 0;
   if(placing == "yellow"){
     for(var i of level.blue){
-      if(circlescollide(level.yellow[0], level.yellow[1], 95, i[0], i[1], 55)){
+      if(circlescollide(level.yellow[0], level.yellow[1], 95, i[0], i[1], i[2])){
         collision = 1;
       }
     }
@@ -90,12 +110,26 @@ checkeditorcollisions = () => {
   
   if(placing == "blue" && level.blue.length > 1){
     for(var i = 0; i < level.blue.length - 1; i++){
-      if(circlescollide(level.blue[level.blue.length-1][0], level.blue[level.blue.length-1][1], 55, level.blue[i][0], level.blue[i][1], 55)){
+      if(circlescollide(
+        level.blue[level.blue.length-1][0],
+        level.blue[level.blue.length-1][1],
+        level.blue[level.blue.length-1][2],
+        level.blue[i][0],
+        level.blue[i][1],
+        level.blue[i][2]
+      )){
         collision = 1;
       }
     }
   }
-  if(placing == "blue" && level.yellow.length && circlescollide(level.yellow[0], level.yellow[1], 95, level.blue[level.blue.length-1][0], level.blue[level.blue.length-1][1], 55)){
+  if(placing == "blue" && level.yellow.length && circlescollide(
+    level.yellow[0],
+    level.yellow[1],
+    95,
+    level.blue[level.blue.length-1][0],
+    level.blue[level.blue.length-1][1],
+    level.blue[level.blue.length-1][2]
+  )){
     collision = 1;
   }
 }

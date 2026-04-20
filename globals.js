@@ -1,6 +1,7 @@
 // Globals 
-page = 0;         // 0 menu, 1 ingame/test, 2 editor, 3 level select
-currentlevel = 0; // 0-150
+page = 2;         // 0 menu, 1 ingame/test, 2 editor, 3 level select
+back = 2;         // exit page
+currentlevel = 1; // 1-150
 c = 0;            // context2d
 md = 0;           // mousedown
 ingameframes = 0;
@@ -22,37 +23,42 @@ level = {
 }
 placing = 0;
 pinkclick = 0;
+pinkposition = 0;
 collision = 0;
 back = 0;
 
-// tmp
-level = {
-  n1:9,
-  n2:2,
-  n3:1,
-  n4:3,
-  n5:4,
-  yellow:[104,338],
-  blue:[[244,200], /*[0,0]*/],
-  red:[143, 167, -109, -133],
-  pink:[],
-  placed1:0,
-  placed2:0,
-  placed3:0,
-  placed4:0,
-  placed5:0,
-  cogs1: [],
-  cogs2: [],
-  cogs3: [],
-  cogs4: [],
-  cogs5: [],
-}
-back = 2;
-page = 1;
+
+//back = 2;
+//page = 1;
 
 
 var cogs = []; // [{size: 1/2/3/4/5, fixed: 0/1, color:grey/yellow/blue, rotation: 0/1/-1, x, y, radius1: inner, radius2: outer, neighbours: [], grounded: 0 }]
 
 blocked = 0;
 won = 0;
-currentlevel = localStorage["cogs_currentlevel"] || 0;
+messageframes = 0;
+blockedframes = 0;
+currentlevel = localStorage["cogs_currentlevel"] || 1;
+
+// tmp
+for(i = 1; i < 150; i++){
+  tmp.innerHTML += "<button onclick='bg("+i+")'>"+i+"</button>";
+}
+
+bg = (i) => {
+  
+  if(levels[i]){
+    currentlevel = i;
+    page = 1;
+    back = 0;
+    parselevel();
+    editor.classList.add('hidden');
+  }
+  else {
+    a.style.background = 'url("levels/'+i+'.png?1")';
+    bottom.style.background = 'url("levels/'+i+'.png?1")';
+    a.style.backgroundSize = '320px auto';
+    bottom.style.backgroundSize = '320px auto';
+    bottom.style.backgroundPosition = 'bottom center';
+  }
+}

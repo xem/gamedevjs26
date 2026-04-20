@@ -100,7 +100,8 @@ onmousemove = (e) => {
     
     // blue
     if(placing == "blue"){
-      level.blue[level.blue.length-1] = [x, y];
+      level.blue[level.blue.length-1][0] = x;
+      level.blue[level.blue.length-1][1] = y;
     }
     
     // red

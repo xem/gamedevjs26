@@ -3,16 +3,31 @@ render = () => {
 
   a.width ^= 0;
   yellowangle+= 100;
+
+  // grid
+  for(var i = 0; i < 320; i += 10){
+    c.globalAlpha = .2;
+    c.fillStyle = "#abf";
+    c.fillRect(i, 0, (i % 50) == 0 ? 2 : 1, 500);
+    c.globalAlpha = 1;
+  }
+  for(var i = 0; i < 500; i += 10){
+    c.globalAlpha = .2;
+    c.fillStyle = "#abf";
+    c.fillRect(0, i, 320, (i % 50) == 0 ? 2 : 1);
+    c.globalAlpha = 1;
+  }
   
   // menu
   if(page == 0){
     editor.classList.add("hidden");
+    c.fillStyle = "#000";
     c.font = "bold 120px Calibri, Arial, sans-serif";
     c.fillText("C   GS", 15, 230);
     drawcog(118,192,yellowangle+80,2,2);
     drawcog(118,130,-yellowangle+90,1,0);
     drawcog(118,7,yellowangle+155,5,1);
-    drawcog(250,310,0,3,0);
+    drawcog(250,310,0,2,0);
     drawcog(58,420,0,2,2);
     c.font = "bold 50px Calibri, Arial, sans-serif";
     c.fillText("PLAY", 25, 320);
@@ -25,12 +40,21 @@ render = () => {
     c.rect(0,0,320,500);
     c.stroke();
     c.closePath();
+    if(currentlevel > 1){
+      c.font = "25px Calibri, Arial, sans-serif";
+      c.fillText("Level " + currentlevel, 27, 340);
+    }
   }
   
   // game
   else if(page == 1){
     
     ingameframes++;
+    
+    // custom
+    if(level.custom){
+      level.custom();
+    }
     
     // red
     if(level.red.length == 4){
@@ -44,14 +68,14 @@ render = () => {
   
     // yellow
     if(level.yellow.length){
-      drawcog(level.yellow[0],level.yellow[1],cogs[0].rotation == 1 ? -yellowangle : 0,5, 1);
+      drawcog(level.yellow[0], level.yellow[1], blocked ? Math.cos(blockedframes) * 10 : cogs[0].rotation == 1 ? -yellowangle : 0,5, 1);
     }
     
     // blue
     if(level.blue.length){
       for(var i in cogs){
         if(cogs[i].color == "blue"){
-          drawcog(cogs[i].x,cogs[i].y,(cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, 3, 2);
+          drawcog(cogs[i].x,cogs[i].y, (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, cogs[i].size, 2);
         }
       }
     }
@@ -101,11 +125,11 @@ render = () => {
           c.fillStyle = "#fff";
           c.strokeStyle = "#000";
           c.lineWidth = .5;
-          c.fillText(level["n"+(i+1)] - level["placed" + (i+1)], 10 + i * 45, 479);
-          c.strokeText(level["n"+(i+1)] - level["placed" + (i+1)], 10 + i * 45, 479);
-          c.strokeText(level["n"+(i+1)] - level["placed" + (i+1)], 10 + i * 45, 479);
-          c.strokeText(level["n"+(i+1)] - level["placed" + (i+1)], 10 + i * 45, 479);
-          c.strokeText(level["n"+(i+1)] - level["placed" + (i+1)], 10 + i * 45, 479);
+          c.fillText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 45, 479);
+          c.strokeText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 45, 479);
+          c.strokeText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 45, 479);
+          c.strokeText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 45, 479);
+          c.strokeText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 45, 479);
         }
       }
     }
@@ -115,38 +139,67 @@ render = () => {
     c.fillText("EXIT", 281, 480);
     
     if(blocked){
-      c.fillStyle = "#fff";
-      c.font = "bold 60px Calibri, Arial, sans-serif";
-      c.fillText("COG-", 85-3, 200-3);
-      c.fillText("COG-", 85-3, 200+3);
-      c.fillText("COG-", 85+3, 200-3);
-      c.fillText("COG-", 85+3, 200+3);
-      c.fillText("BLOCKED!", 25-3, 250-3);
-      c.fillText("BLOCKED!", 25-3, 250+3);
-      c.fillText("BLOCKED!", 25+3, 250-3);
-      c.fillText("BLOCKED!", 25+3, 250+3);
-      c.fillStyle = "#000";
-      c.font = "bold 60px Calibri, Arial, sans-serif";
-      c.fillText("COG-", 85, 200);
-      c.fillText("BLOCKED!", 25, 250);
+      messageframes++;
+      blockedframes++;
+      if(messageframes > 50){
+      //setTimeout(()=>{
+        c.globalAlpha = 0.7;
+        c.fillStyle = "#def";
+        c.fillRect(5,5,320-10,450-5);
+        c.globalAlpha = 1;
+        buttons.classList.remove("hidden");
+        reset1.classList.remove("hidden");
+        c.fillStyle = "#fff";
+        c.font = "bold 60px Calibri, Arial, sans-serif";
+        c.fillText("COG-", 110-3, 200-3);
+        c.fillText("COG-", 110-3, 200+3);
+        c.fillText("COG-", 110+3, 200-3);
+        c.fillText("COG-", 110+3, 200+3);
+        c.fillText("BLOCKED!", 25-3, 250-3);
+        c.fillText("BLOCKED!", 25-3, 250+3);
+        c.fillText("BLOCKED!", 25+3, 250-3);
+        c.fillText("BLOCKED!", 25+3, 250+3);
+        c.fillStyle = "#000";
+        c.font = "bold 60px Calibri, Arial, sans-serif";
+        c.fillText("COG-", 110, 200);
+        c.fillText("BLOCKED!", 25, 250);
+      //}, 500);
+      }
     }
     
     if(won){
-      c.fillStyle = "#fff";
-      c.font = "bold 45px Calibri, Arial, sans-serif";
-      c.fillText("COG-", 100-3, 200-3);
-      c.fillText("COG-", 100+3, 200-3);
-      c.fillText("COG-", 100-3, 200+3);
-      c.fillText("COG-", 100+3, 200+3);
-      c.fillText("RATULATIONS!", 20+3, 250+3);
-      c.fillText("RATULATIONS!", 20-3, 250+3);
-      c.fillText("RATULATIONS!", 20+3, 250-3);
-      c.fillText("RATULATIONS!", 20-3, 250-3);
-      c.fillStyle = "#000";
-      c.font = "bold 45px Calibri, Arial, sans-serif";
-      c.fillText("COG-", 100, 200);
-      c.fillText("RATULATIONS!", 20, 250);
+      messageframes++;
+      if(messageframes > 50){
+      //setTimeout(()=>{
+        c.globalAlpha = 0.7;
+        c.fillStyle = "#def";
+        c.fillRect(5,5,320-10,450-5);
+        c.globalAlpha = 1;
+        buttons.classList.remove("hidden");
+        if(back == 2){
+          exit1.classList.remove("hidden");
+        }
+        else {
+          next1.classList.remove("hidden");
+        }
+        c.fillStyle = "#fff";
+        c.font = "bold 45px Calibri, Arial, sans-serif";
+        c.fillText("COG-", 110-3, 200-3);
+        c.fillText("COG-", 110+3, 200-3);
+        c.fillText("COG-", 110-3, 200+3);
+        c.fillText("COG-", 110+3, 200+3);
+        c.fillText("RATULATIONS!", 20+3, 250+3);
+        c.fillText("RATULATIONS!", 20-3, 250+3);
+        c.fillText("RATULATIONS!", 20+3, 250-3);
+        c.fillText("RATULATIONS!", 20-3, 250-3);
+        c.fillStyle = "#000";
+        c.font = "bold 45px Calibri, Arial, sans-serif";
+        c.fillText("COG-", 110, 200);
+        c.fillText("RATULATIONS!", 20, 250);
+      //}, 500);
+      }
     }
+
 
   }
   
@@ -172,7 +225,7 @@ render = () => {
     // blue
     if(level.blue.length){
       for(var i in level.blue){
-        drawcog(level.blue[i][0],level.blue[i][1],0,3, (placing == "blue" && collision && i == level.blue.length-1) ? 4 : 2);
+        drawcog(level.blue[i][0],level.blue[i][1],0,(level.blue[i][2]-15)/20+1, (placing == "blue" && collision && i == level.blue.length-1) ? 4 : 2);
       }
     }
     

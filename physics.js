@@ -72,8 +72,6 @@ physics = () => {
         if(globalneighbourangle == 99 && cogs[i].neighbours.includes(0)){
           cogs[0].rotation = 0;
           blocked = 1;
-          buttons.classList.remove("hidden");
-          reset1.classList.remove("hidden");
         }
         else {
           blocked = 0;
@@ -90,13 +88,7 @@ physics = () => {
       }
     }
     if(won == 1){
-      buttons.classList.remove("hidden");
-      if(back == 2){
-        exit1.classList.remove("hidden");
-      }
-      else {
-        next1.classList.remove("hidden");
-      }
+      // see timeout in render.js
     }
   }
 }
