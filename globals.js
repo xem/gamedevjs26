@@ -48,7 +48,7 @@ for(i = 1; i < 150; i++){
 
 bg = (i) => {
   
-  if(levels[i]){
+  if(levels[i] && levels[i].yellow){
     currentlevel = i;
     page = 1;
     back = 0;
@@ -56,6 +56,9 @@ bg = (i) => {
     editor.classList.add('hidden');
   }
   else {
+    //currentlevel = i;
+    //parselevel();
+    page = 2;
     a.style.background = 'url("levels/'+i+'.png?1")';
     bottom.style.background = 'url("levels/'+i+'.png?1")';
     a.style.backgroundSize = '320px auto';
