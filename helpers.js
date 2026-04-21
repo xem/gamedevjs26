@@ -186,10 +186,11 @@ parselevel = () => {
   }
   else { alert("no blue") }
   ingameframes = 0;
+  
+  levelhistory = [JSON.parse(JSON.stringify(level))];
+  cogshistory = [JSON.parse(JSON.stringify(cogs))];
+  historylength = 0;
 }
-
-// tmp
-//parselevel();
 
 circlescollide = (x1, y1, r1, x2, y2, r2) => {
   const dx = x2 - x1;

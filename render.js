@@ -33,11 +33,11 @@ render = () => {
     c.fillText("PLAY", 25, 320);
     c.fillText("EDITOR", 135, 415);
     c.font = "17px Calibri, Arial, sans-serif";
-    c.fillText("A tribute to 'Geared' for GamedevJS 2026", 20, 490);
+    c.fillText("A tribute to 'Geared' for GamedevJS 2026", 20, 484);
     c.strokeStyle = "#000";
     c.lineWidth = 10;
     c.beginPath();
-    c.rect(0,0,320,500);
+    c.rect(0,0,320,494);
     c.stroke();
     c.closePath();
     if(currentlevel > 1){
@@ -80,6 +80,7 @@ render = () => {
       }
     }
     
+    // grey
     for(var i in cogs){
       if(!cogs[i].fixed){
         drawcog(cogs[i].x, cogs[i].y, (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, cogs[i].size, 0);
@@ -104,39 +105,47 @@ render = () => {
         level.cogs5[level.cogs5.length-1][0],level.cogs5[level.cogs5.length-1][1],0,5,level.cogs5[level.cogs5.length-1][3] ? 4 : 0);
     }
     
-    // bottom
-    c.fillStyle = "#000";
-    c.strokeStyle = "#000";
-    c.lineWidth = 10;
-    c.fillRect(0,450,320,50);
-    c.beginPath();
-    c.rect(0,0,320,500);
-    c.stroke();
-    c.closePath(),
-    c.font = "bold 33px Calibri, Arial, sans-serif";
-    
     // boxes
-    for(var i = 0; i < 7; i++){
-      c.fillStyle = "hsl(" + (i<5?-160:(i * 40 - 200)) + ", 70%, 70%)";
-      c.fillRect(5+45*i, 455, 40, 40);
+    c.font = "bold 33px Calibri, Arial, sans-serif";
+    for(var i = 0; i < 8; i++){
+      c.beginPath();
+      c.lineWidth = 2;
+      c.fillStyle = "hsl(" + (i<5?-160:(-i * 40 +280)) + ", 70%, 70%)";
+      c.rect(1+40*i, 452, 38, 38);
+      c.fill();
+      c.stroke();
       if(i < 5){
-        drawcog(34 + i*49,485+i*2,0,1+i,3,.35);
+        drawcog(34 + i*42,485+i*2,0,1+i,3,.35);
         if(level["n" + (i+1)] != 0){
           c.fillStyle = "#fff";
           c.strokeStyle = "#000";
           c.lineWidth = .5;
-          c.fillText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 45, 479);
-          c.strokeText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 45, 479);
-          c.strokeText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 45, 479);
-          c.strokeText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 45, 479);
-          c.strokeText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 45, 479);
+          c.fillText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 40, 479);
+          c.strokeText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 40, 479);
+          c.strokeText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 40, 479);
+          c.strokeText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 40, 479);
+          c.strokeText((level["n"+(i+1)] - level["placed" + (i+1)]) || '', 10 + i * 40, 479);
         }
       }
     }
     c.fillStyle = "#000";
-    c.font = "bold 15px Calibri, Arial, sans-serif";
-    c.fillText("RESET", 231, 480);
-    c.fillText("EXIT", 281, 480);
+    c.font = "bold 12px Calibri, Arial, sans-serif";
+    c.fillText("UNDO", 205, 476);
+    c.fillText("RESET", 244, 476);
+    c.fillText("EXIT", 287, 476);
+    
+    // bottom
+    c.fillStyle = "#000";
+    c.strokeStyle = "#000";
+    c.beginPath();
+    c.lineWidth = 5;
+    c.rect(0,450,320,60);
+    c.stroke();
+    c.beginPath();
+    c.lineWidth = 10;
+    c.rect(0,0,320,494);
+    c.stroke();
+    c.closePath();
     
     if(blocked){
       messageframes++;
@@ -145,7 +154,7 @@ render = () => {
       //setTimeout(()=>{
         c.globalAlpha = 0.7;
         c.fillStyle = "#def";
-        c.fillRect(5,5,320-10,450-5);
+        c.fillRect(5,5,320-10,450-9);
         c.globalAlpha = 1;
         buttons.classList.remove("hidden");
         reset1.classList.remove("hidden");
@@ -173,7 +182,7 @@ render = () => {
       //setTimeout(()=>{
         c.globalAlpha = 0.7;
         c.fillStyle = "#def";
-        c.fillRect(5,5,320-10,450-5);
+        c.fillRect(5,5,320-10,450-9);
         c.globalAlpha = 1;
         buttons.classList.remove("hidden");
         if(back == 2){

@@ -28,9 +28,21 @@ onclick = (e) => {
   // game
   else if(page == 1 && ingameframes > 20){
     
+    // undo
+    c.beginPath()
+    c.rect(202, 455, 40, 40); // reset
+    c.closePath();
+    if(c.isPointInPath(x,y)){
+      if(historylength > 0){
+        historylength--;
+        level = levelhistory[historylength];
+        cogs = cogshistory[historylength];
+      }
+    }
+    
     // reset
     c.beginPath()
-    c.rect(5+45*5, 455, 40, 40); // reset
+    c.rect(5+40*6, 455, 40, 40); // reset
     c.closePath();
     if(c.isPointInPath(x,y)){
       level.placed1 = 0,
@@ -49,7 +61,7 @@ onclick = (e) => {
 
     // exit
     c.beginPath()
-    c.rect(5+45*6, 455, 40, 40);
+    c.rect(5+40*7, 455, 40, 40);
     c.closePath();
     if(c.isPointInPath(x,y)){
       page = back;
@@ -91,6 +103,11 @@ onclick = (e) => {
         placing = 0;
         //console.log(cogs[cogs.length-1]);
         //console.log(level.cogs1[level.cogs1.length-1]);
+        
+        
+        historylength++;
+        levelhistory[historylength] = JSON.parse(JSON.stringify(level));
+        cogshistory[historylength] = JSON.parse(JSON.stringify(cogs));
       }
       else {
         placing = 0;
@@ -109,6 +126,10 @@ onclick = (e) => {
         cogs.push({size: 2, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 35, radius2: 45, neighbours: [], grounded: 0 });
         level.cogs2[level.cogs2.length-1] = [x, y];
         placing = 0;
+        
+        historylength++;
+        levelhistory[historylength] = JSON.parse(JSON.stringify(level));
+        cogshistory[historylength] = JSON.parse(JSON.stringify(cogs));
       }
       else {
         placing = 0;
@@ -127,6 +148,11 @@ onclick = (e) => {
         cogs.push({size: 3, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 55, radius2: 65, neighbours: [], grounded: 0 });
         level.cogs3[level.cogs3.length-1] = [x, y];
         placing = 0;
+        
+        historylength++;
+        levelhistory[historylength] = JSON.parse(JSON.stringify(level));
+        cogshistory[historylength] = JSON.parse(JSON.stringify(cogs));
+        
       }
       else {
         placing = 0;
@@ -145,6 +171,10 @@ onclick = (e) => {
         cogs.push({size: 4, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 75, radius2: 85, neighbours: [], grounded: 0 });
         level.cogs4[level.cogs4.length-1] = [x, y];
         placing = 0;
+        
+        historylength++;
+        levelhistory[historylength] = JSON.parse(JSON.stringify(level));
+        cogshistory[historylength] = JSON.parse(JSON.stringify(cogs));
       }
       else {
         placing = 0;
@@ -163,6 +193,10 @@ onclick = (e) => {
         cogs.push({size: 5, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 100, radius2: 110, neighbours: [], grounded: 0 });
         level.cogs5[level.cogs5.length-1] = [x, y];
         placing = 0;
+        
+        historylength++;
+        levelhistory[historylength] = JSON.parse(JSON.stringify(level));
+        cogshistory[historylength] = JSON.parse(JSON.stringify(cogs));
       }
       else {
         placing = 0;

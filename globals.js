@@ -1,5 +1,5 @@
 // Globals 
-page = 0;         // 0 menu, 1 ingame/test, 2 editor, 3 level select
+page = 1;         // 0 menu, 1 ingame/test, 2 editor, 3 level select
 back = 2;         // exit page
 currentlevel = 1; // 1-150
 c = 0;            // context2d
@@ -27,6 +27,9 @@ redclick = 0;
 pinkposition = 0;
 collision = 0;
 back = 0;
+levelhistory = [];
+cogshistory = [];
+historylength = 0;
 
 
 //back = 2;
