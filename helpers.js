@@ -21,9 +21,9 @@ drawcog = (x, y, angle = 0, size = 1, type = 0, scale = 1) => {
     c.fillStyle = "#000";
     c.font = "bold 20px calibri, arial, sans-serif";
     c.textAlign = "center";
-    c.fillText("LEVEL " + (currentlevel), 0, -72);
+    c.fillText("LEVEL " + (currentlevel), 0, -74);
     c.rotate(Math.PI);
-    c.fillText("LEVEL " + (currentlevel), 0, -72);
+    c.fillText("LEVEL " + (currentlevel), 0, -74);
     c.restore();
   }
   c.closePath();

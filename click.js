@@ -224,7 +224,8 @@ onclick = (e) => {
 
       // inventory cog 1
       c.beginPath()
-      c.rect(5+45*0, 455, 40, 40); // 1
+      c.rect(5+40*0, 455, 40, 40); // 1
+      //c.fill();
       c.closePath();
       if(c.isPointInPath(x,y)){
         if((level.n1 - level.placed1) > 0){
@@ -236,7 +237,7 @@ onclick = (e) => {
       
       // inventory cog 2
       c.beginPath()
-      c.rect(5+45*1, 455, 40, 40); // 2
+      c.rect(5+40*1, 455, 40, 40); // 2
       c.closePath();
       if(c.isPointInPath(x,y)){
         if((level.n2 - level.placed2) > 0){
@@ -248,7 +249,7 @@ onclick = (e) => {
 
       // inventory cog 3
       c.beginPath()
-      c.rect(5+45*2, 455, 40, 40); // 3
+      c.rect(5+40*2, 455, 40, 40); // 3
       c.closePath();
       if(c.isPointInPath(x,y)){
         if((level.n3 - level.placed3) > 0){
@@ -260,7 +261,7 @@ onclick = (e) => {
 
       // inventory cog 4
       c.beginPath()
-      c.rect(5+45*3, 455, 40, 40); // 4
+      c.rect(5+40*3, 455, 40, 40); // 4
       c.closePath();
       if(c.isPointInPath(x,y)){
         if((level.n4 - level.placed4) > 0){
@@ -272,7 +273,7 @@ onclick = (e) => {
 
       // inventory cog 5
       c.beginPath()
-      c.rect(5+45*4, 455, 40, 40); // 5
+      c.rect(5+40*4, 455, 40, 40); // 5
       c.closePath();
       if(c.isPointInPath(x,y)){
         if((level.n5 - level.placed5) > 0){
