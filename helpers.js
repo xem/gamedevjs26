@@ -204,7 +204,7 @@ cogstouch = (x1, y1, inner1, x2, y2, inner2, debug) => {
   const dy = y2 - y1;
   const distSq = dx*dx + dy*dy;
   const innerradii = inner1 + inner2;
-  const outerradii = inner1 + inner2 + 20;
+  const outerradii = inner1 + inner2 + 20 + (inner1 == 100 ? 5 : 0) + (inner2 == 100 ? 5 : 0);
   if(debug){
     //console.log(x1, y1, inner1, x2, y2, inner2);
     //console.log(dx, dy, distSq, innerradii, outerradii, innerradii * innerradii, outerradii * outerradii);

@@ -24,9 +24,9 @@ render = () => {
     c.fillStyle = "#000";
     c.font = "bold 120px Calibri, Arial, sans-serif";
     c.fillText("C   GS", 15, 230);
-    drawcog(118,192,yellowangle+80,2,2);
-    drawcog(118,130,-yellowangle+90,1,0);
     drawcog(118,3,yellowangle+155,5,1);
+    drawcog(118,130,-yellowangle+90,1,0);
+    drawcog(118,192,yellowangle+80,2,2);
     drawcog(250,310,0,2,0);
     drawcog(58,420,0,2,2);
     c.font = "bold 50px Calibri, Arial, sans-serif";

@@ -159,7 +159,7 @@ onclick = (e) => {
       if(y < radius) y = radius;
       if(x > 320 - radius) x = 320 - radius;
       if(y > 450 - radius) y = 450 - radius;
-      if(!gamecollision(x,y,110)){
+      if(!gamecollision(x,y,100)){
         cogs.push({size: 5, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 100, radius2: 110, neighbours: [], grounded: 0 });
         level.cogs5[level.cogs5.length-1] = [x, y];
         placing = 0;

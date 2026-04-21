@@ -43,7 +43,7 @@ currentlevel = localStorage["cogs_currentlevel"] || 1;
 
 // tmp
 for(i = 1; i < 150; i++){
-  //tmp.innerHTML += "<button onclick='bg("+i+")'>"+i+"</button>";
+  tmp.innerHTML += "<button onclick='bg("+i+")'>"+i+"</button>";
 }
 
 bg = (i) => {
