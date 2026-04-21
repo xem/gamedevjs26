@@ -58,6 +58,7 @@ bg = (i) => {
     back = 0;
     parselevel();
     editor.classList.add('hidden');
+    a.style.background = '';
   }
   else {
     //currentlevel = i;

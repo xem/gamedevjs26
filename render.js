@@ -122,6 +122,8 @@ render = () => {
     // boxes
     c.font = "bold 33px Calibri, Arial, sans-serif";
     for(var i = 0; i < 8; i++){
+      c.fillStyle = "#000";
+      c.strokeStyle = "#000";
       c.beginPath();
       c.lineWidth = 2;
       c.fillStyle = "hsl(" + (i<5?-160:(-i * 40 +280)) + ", 70%, 70%)";
