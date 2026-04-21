@@ -198,14 +198,17 @@ render = () => {
         c.fillText("COG-", 110+3, 200-3);
         c.fillText("COG-", 110-3, 200+3);
         c.fillText("COG-", 110+3, 200+3);
-        c.fillText("RATULATIONS!", 20+3, 250+3);
-        c.fillText("RATULATIONS!", 20-3, 250+3);
-        c.fillText("RATULATIONS!", 20+3, 250-3);
-        c.fillText("RATULATIONS!", 20-3, 250-3);
+        var messages = ["NUMENTAL", "RATULATIONS", "TASTIC", "BELIEVABLE", "SMICAL", "PLIMENTS", "XELLENT", "PRESSIVE", "STANDING", "MAZING", "SOME", "BULOUS", "STONISHING", "STACULAR", "TRAORDINARY", "BLOWING", "DERFUL", "RIFIC", "CEPTIONAL", "ENDARY", "PIC", "TORY", "FECTION", "DROPPING", "MARKABLE", "NIFICENT", "LORIOUS", "LOSSAL", "RAZY", "SMIC", "WILDERING", "PREME", "CREDIBLE", "DING OVATION", "MINATION", "LORY", "ANTIC"];
+        var message = messages[currentlevel % messages.length];
+        c.textAlign = "center";
+        c.fillText(message+"!", 160+3, 250+3);
+        c.fillText(message+"!", 160-3, 250+3);
+        c.fillText(message+"!", 160+3, 250-3);
+        c.fillText(message+"!", 160-3, 250-3);
         c.fillStyle = "#000";
         c.font = "bold 45px Calibri, Arial, sans-serif";
-        c.fillText("COG-", 110, 200);
-        c.fillText("RATULATIONS!", 20, 250);
+        c.fillText("COG-", 160, 200);
+        c.fillText(message+"!", 160, 250);
         localStorage["cogs_"+currentlevel] = 1;
       //}, 500);
       }
@@ -259,8 +262,8 @@ render = () => {
     c.font = "bold 25px Calibri, Arial, Sans-serif";
     c.fillText("LEVELS", 15, 30);
     c.font = "bold 20px Calibri, Arial, Sans-serif";
-    c.fillText("RESET", 200, 26);
-    c.fillText("EXIT", 268, 26);
+    c.fillText("RESET", 200, 27);
+    c.fillText("EXIT", 268, 27);
     c.lineWidth = 10;
     c.beginPath();
     c.rect(0,0,320,494);
@@ -285,12 +288,12 @@ render = () => {
     }
     c.lineWidth = 2;
     c.beginPath();
-    c.rect(195, 9, 58, 20);
+    c.rect(195, 9, 58, 23);
     c.stroke();
     c.closePath();
     c.lineWidth = 2;
     c.beginPath();
-    c.rect(265, 9, 43, 20);
+    c.rect(265, 9, 43, 23);
     c.stroke();
     c.closePath();
   }
