@@ -1,6 +1,5 @@
 // Editor stuff
 // yellow is size 5
-// blue is size 3
 
 oninput = onchange = () => {
   if(page == 2){
@@ -43,6 +42,7 @@ breset.onclick = reseteditor = () => {
     blue: [],
     red: [],
     pink: [],
+    pinkcog: [],
   }
 }
 
@@ -88,6 +88,17 @@ bblue3.onclick = () => {
   }
 }
 
+bpinkcog.onclick = () => {
+  placing = "pinkcog";
+  if(level.pinkcog && level.pinkcog.length > 0 && level.pinkcog[level.pinkcog.length-1][0] == 999){
+    // use the last blue slot if empty
+  }
+  else {
+    if(!level.pinkcog)level.pinkcog=[];
+    level.pinkcog.push([999,999,15]); // new one
+  }
+}
+
 bred.onclick = () => {
   placing = "red";
 }
@@ -102,15 +113,25 @@ checkeditorcollisions = () => {
   // blue radius is 15/35/55
   // yellow radius is 95
   collision = 0;
+  
+  // yellow 
   if(placing == "yellow"){
     for(var i of level.blue){
       if(circlescollide(level.yellow[0], level.yellow[1], 95, i[0], i[1], i[2])){
         collision = 1;
       }
     }
+    for(var i of level.pinkcog){
+      if(circlescollide(level.yellow[0], level.yellow[1], 95, i[0], i[1], i[2])){
+        collision = 1;
+      }
+    }
   }
   
+  // blue
   if(placing == "blue" && level.blue.length > 1){
+    
+    // vs blue
     for(var i = 0; i < level.blue.length - 1; i++){
       if(circlescollide(
         level.blue[level.blue.length-1][0],
@@ -123,7 +144,23 @@ checkeditorcollisions = () => {
         collision = 1;
       }
     }
+    
+    // vs pink cog
+    for(var i = 0; i < level.pinkcog.length; i++){
+      if(circlescollide(
+        level.blue[level.blue.length-1][0],
+        level.blue[level.blue.length-1][1],
+        level.blue[level.blue.length-1][2],
+        level.pinkcog[i][0],
+        level.pinkcog[i][1],
+        level.pinkcog[i][2]
+      )){
+        collision = 1;
+      }
+    }
   }
+  
+  // vs yellow
   if(placing == "blue" && level.yellow.length && circlescollide(
     level.yellow[0],
     level.yellow[1],
@@ -131,6 +168,51 @@ checkeditorcollisions = () => {
     level.blue[level.blue.length-1][0],
     level.blue[level.blue.length-1][1],
     level.blue[level.blue.length-1][2]
+  )){
+    collision = 1;
+  }
+  
+  // pink cog
+  
+  if(placing == "pinkcog" && level.pinkcog.length > 1){
+
+    // vs blue
+    for(var i = 0; i < level.blue.length; i++){
+      if(circlescollide(
+        level.pinkcog[level.pinkcog.length-1][0],
+        level.pinkcog[level.pinkcog.length-1][1],
+        level.pinkcog[level.pinkcog.length-1][2],
+        level.blue[i][0],
+        level.blue[i][1],
+        level.blue[i][2]
+      )){
+        collision = 1;
+      }
+    }
+    
+    // vs pink
+    for(var i = 0; i < level.pinkcog.length - 1; i++){
+      if(circlescollide(
+        level.pinkcog[level.pinkcog.length-1][0],
+        level.pinkcog[level.pinkcog.length-1][1],
+        level.pinkcog[level.pinkcog.length-1][2],
+        level.pinkcog[i][0],
+        level.pinkcog[i][1],
+        level.pinkcog[i][2]
+      )){
+        collision = 1;
+      }
+    }
+  }
+  
+  // vs yellow
+  if(placing == "pinkcog" && level.yellow.length && circlescollide(
+    level.yellow[0],
+    level.yellow[1],
+    95,
+    level.pinkcog[level.pinkcog.length-1][0],
+    level.pinkcog[level.pinkcog.length-1][1],
+    level.pinkcog[level.pinkcog.length-1][2]
   )){
     collision = 1;
   }

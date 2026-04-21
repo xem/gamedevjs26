@@ -81,6 +81,15 @@ render = () => {
       }
     }
     
+    // pink cog
+    if(level.pinkcog && level.pinkcog.length){
+      for(var i in cogs){
+        if(cogs[i].color == "pink"){
+          drawcog(cogs[i].x,cogs[i].y, (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, 1, 5);
+        }
+      }
+    }
+    
     // grey
     for(var i in cogs){
       if(!cogs[i].fixed){
@@ -104,6 +113,10 @@ render = () => {
     if(placing == "5") {
       drawcog(
         level.cogs5[level.cogs5.length-1][0],level.cogs5[level.cogs5.length-1][1],0,5,level.cogs5[level.cogs5.length-1][3] ? 4 : 0);
+    }
+    if(placing == "pinkcog") {
+      drawcog(
+        level.pinkcog[level.pinkcog.length-1][0],level.pinkcog[level.pinkcog.length-1][1],0,1,level.pinkcog[level.pinkcog.length-1][3] ? 4 : 5);
     }
     
     // boxes
@@ -198,7 +211,7 @@ render = () => {
         c.fillText("COG-", 110+3, 200-3);
         c.fillText("COG-", 110-3, 200+3);
         c.fillText("COG-", 110+3, 200+3);
-        var messages = ["NUMENTAL", "RATULATIONS", "TASTIC", "BELIEVABLE", "SMICAL", "PLIMENTS", "XELLENT", "PRESSIVE", "STANDING", "MAZING", "SOME", "BULOUS", "STONISHING", "STACULAR", "TRAORDINARY", "BLOWING", "DERFUL", "RIFIC", "CEPTIONAL", "ENDARY", "PIC", "TORY", "FECTION", "DROPPING", "MARKABLE", "NIFICENT", "LORIOUS", "LOSSAL", "RAZY", "SMIC", "WILDERING", "PREME", "CREDIBLE", "DING OVATION", "MINATION", "LORY", "ANTIC"];
+        var messages = ["NUMENTAL", "RATULATIONS", "TASTIC", "BELIEVABLE", "SMICAL", "PLIMENTS", "XELLENT", "PRESSIVE", "STANDING", "MAZING", "SOME", "BULOUS", "STONISHING", "STACULAR", "TRAORDINARY", "BLOWING", "DERFUL", "RIFIC", "CEPTIONAL", "ENDARY", "PIC WIN", "TORY", "FECTION", "DROPPING", "MARKABLE", "NIFICENT", "LORIOUS", "LOSSAL", "RAZY", "SMIC", "WILDERING", "PREME", "CREDIBLE", "DING OVATION", "MINATION", "LORY", "ANTIC"];
         var message = messages[currentlevel % messages.length];
         c.textAlign = "center";
         c.fillText(message+"!", 160+3, 250+3);
@@ -240,6 +253,13 @@ render = () => {
     if(level.blue.length){
       for(var i in level.blue){
         drawcog(level.blue[i][0],level.blue[i][1],0,(level.blue[i][2]-15)/20+1, (placing == "blue" && collision && i == level.blue.length-1) ? 4 : 2);
+      }
+    }
+    
+    // pink cog
+    if(level.pinkcog && level.pinkcog.length){
+      for(var i in level.pinkcog){
+        drawcog(level.pinkcog[i][0],level.pinkcog[i][1],0,1, (placing == "pinkcog" && collision && i == level.pinkcog.length-1) ? 4 : 5);
       }
     }
     

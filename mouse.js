@@ -104,6 +104,12 @@ onmousemove = (e) => {
       level.blue[level.blue.length-1][1] = y;
     }
     
+    // pinkcog
+    if(placing == "pinkcog"){
+      level.pinkcog[level.pinkcog.length-1][0] = x;
+      level.pinkcog[level.pinkcog.length-1][1] = y;
+    }
+    
     // red
     if(placing == "red" && level.red.length > 0 && level.red[level.red.length-1].length >= 2 && redclick == 1){
       level.red[level.red.length-1][2] = x - level.red[level.red.length-1][0];

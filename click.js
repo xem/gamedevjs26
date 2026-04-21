@@ -297,6 +297,11 @@ onclick = (e) => {
       if(placing == "blue") { 
         placing = 0;
       }
+      
+      // pinkcog
+      if(placing == "pinkcog") { 
+        placing = 0;
+      }
 
       // red
       if(placing == "red") {
@@ -349,6 +354,7 @@ onclick = (e) => {
     }
   }
   
+  // levels
   else if(page == 3){
     
     // levels

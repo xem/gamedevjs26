@@ -2,7 +2,7 @@
 // size: 1, 2, 3, 4, 5
 // radius: 15, 35, 55, 75, 105
 // teeth: 6, 12, 18, 24, 30
-// type: 0 grey, 1 yellow, 2 blue, 3 black, 4 red
+// type: 0 grey, 1 yellow, 2 blue, 3 black, 4 red, 5: pink
 // speed: 1, 1/2, 1/3, 1/4, 1/5
 drawcog = (x, y, angle = 0, size = 1, type = 0, scale = 1) => {
   c.save();
@@ -11,7 +11,7 @@ drawcog = (x, y, angle = 0, size = 1, type = 0, scale = 1) => {
   c.lineWidth = 3;
   c.scale(scale, scale);
   c.arc(0, 0, 15 + (size - 1) * 20 + (size == 5 ? 5 : 0), 0, 7);
-  c.fillStyle = ["#ccc", "yellow", "#2ad","black", "red"][type];
+  c.fillStyle = ["#ccc", "yellow", "#2ad","black", "red", "pink"][type];
   c.strokeStyle = "#000";
   c.fill();
   c.stroke();
@@ -40,7 +40,7 @@ drawcog = (x, y, angle = 0, size = 1, type = 0, scale = 1) => {
     c.rotate((2 * Math.PI / teeth) * i + (angle * 1/size) / 100);
     c.translate(0, -25 - (size - 1) * 20 - (size == 5 ? 5 : 0));
     c.fillRect(-6, -3, 12, 12);
-    c.fillStyle = c.fillStyle = ["#ccc", "yellow", "#2ad", "black", "red"][type];
+    c.fillStyle = c.fillStyle = ["#ccc", "yellow", "#2ad", "black", "red", "pink"][type];
     c.fillRect(-3, 0, 6, 12);
     c.restore();
   }
@@ -186,6 +186,12 @@ parselevel = () => {
   }
   else { alert("no blue") }
   ingameframes = 0;
+  
+  if(level.pinkcog){
+    for(var i in level.pinkcog){
+      cogs.push({size: 1, fixed: 1, color:"pink", rotation: 0, x: level.pinkcog[i][0], y: level.pinkcog[i][1], radius1:15, radius2: 25, neighbours: [], grounded: 1 });
+    }
+  }
   
   levelhistory = [JSON.parse(JSON.stringify(level))];
   cogshistory = [JSON.parse(JSON.stringify(cogs))];
