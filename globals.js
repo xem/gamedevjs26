@@ -1,5 +1,5 @@
 // Globals 
-page = 1;         // 0 menu, 1 ingame/test, 2 editor, 3 level select
+page = 3;         // 0 menu, 1 ingame/test, 2 editor, 3 level select
 back = 2;         // exit page
 currentlevel = 1; // 1-150
 c = 0;            // context2d

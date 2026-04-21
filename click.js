@@ -7,21 +7,36 @@ onclick = (e) => {
   
   // menu
   if(page == 0){
+    
+    // play
     c.beginPath();
-    c.rect(25, 270, 130, 50); // play
+    c.rect(25, 250, 120, 70); // play
     if(c.isPointInPath(x,y)){
       back = 0;
       page = 1;
       parselevel();
     }
+    //c.fill();
     c.closePath();
     
+    // levels
     c.beginPath();
-    c.rect(135, 370, 160, 50); // editor
+    c.rect(65, 330, 150, 50); // levels
+    if(c.isPointInPath(x,y)){
+      back = 0;
+      page = 3;
+    }
+    //c.fill();
+    c.closePath();
+    
+    // editor
+    c.beginPath();
+    c.rect(135, 410, 160, 50); // editor
     if(c.isPointInPath(x,y)){
       page = 2;
       reseteditor();
     }
+    //c.fill();
     c.closePath();
   }
   
@@ -331,6 +346,41 @@ onclick = (e) => {
           pinkclick = 0;
         }
       }
+    }
+  }
+  
+  else if(page == 3){
+    
+    // levels
+    for(var i = 0; i < 10; i++){
+      for(var j = 0; j < 15; j++){
+        c.beginPath();
+        c.rect(13 + i * 30, 38 + j * 30, 24, 24);
+        if(c.isPointInPath(x,y)){
+          currentlevel = j*10+i+1;
+          page = 1;
+          back = 0;
+          parselevel();
+        }
+      }
+    }
+    
+    // reset
+    c.beginPath();
+    c.rect(195, 9, 58, 20);
+    c.closePath();
+    if(c.isPointInPath(x,y)){
+      if(confirm("All your progress will be lost")){
+        localStorage.clear();
+      }
+    }
+
+    // exit
+    c.beginPath();
+    c.rect(265, 9, 43, 20);
+    c.closePath();
+    if(c.isPointInPath(x,y)){
+      page = 0;
     }
   }
   

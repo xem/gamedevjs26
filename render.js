@@ -27,11 +27,12 @@ render = () => {
     drawcog(118,3,yellowangle+155,5,1);
     drawcog(118,130,-yellowangle+90,1,0);
     drawcog(118,192,yellowangle+80,2,2);
-    drawcog(250,310,0,2,0);
-    drawcog(58,420,0,2,2);
+    drawcog(320,330,0,4,0);
+    drawcog(58,430,0,1,2);
     c.font = "bold 50px Calibri, Arial, sans-serif";
-    c.fillText("PLAY", 25, 320);
-    c.fillText("EDITOR", 135, 415);
+    c.fillText("PLAY", 25, 290);
+    c.fillText("LEVELS", 65, 370);
+    c.fillText("EDITOR", 135, 455);
     c.font = "17px Calibri, Arial, sans-serif";
     c.fillText("A tribute to 'Geared' for GamedevJS 2026", 20, 484);
     c.strokeStyle = "#000";
@@ -42,7 +43,7 @@ render = () => {
     c.closePath();
     if(currentlevel > 1){
       c.font = "25px Calibri, Arial, sans-serif";
-      c.fillText("Level " + currentlevel, 27, 340);
+      c.fillText("Level " + currentlevel, 27, 310);
     }
   }
   
@@ -205,6 +206,7 @@ render = () => {
         c.font = "bold 45px Calibri, Arial, sans-serif";
         c.fillText("COG-", 110, 200);
         c.fillText("RATULATIONS!", 20, 250);
+        localStorage["cogs_"+currentlevel] = 1;
       //}, 500);
       }
     }
@@ -252,7 +254,44 @@ render = () => {
   
   // levels
   else if(page == 3){
-    //c.font = "bold 120px Calibri, Arial, sans-serif";
-    //c.fillText("3", 15, 230);
+    c.strokeStyle = "#000";
+    c.fillStyle = "#000";
+    c.font = "bold 25px Calibri, Arial, Sans-serif";
+    c.fillText("LEVELS", 15, 30);
+    c.font = "bold 20px Calibri, Arial, Sans-serif";
+    c.fillText("RESET", 200, 26);
+    c.fillText("EXIT", 268, 26);
+    c.lineWidth = 10;
+    c.beginPath();
+    c.rect(0,0,320,494);
+    c.stroke();
+    c.closePath();
+    for(var i = 0; i < 10; i++){
+      for(var j = 0; j < 15; j++){
+        c.lineWidth = 2;
+        c.beginPath();
+        c.rect(13 + i * 30, 38 + j * 30, 24, 24);
+        c.fillStyle = "#7F7";
+        if(localStorage["cogs_"+(j*10+i+1)] == 1){
+          c.fill();
+        }
+        c.stroke();
+        c.closePath();
+        c.textAlign = "center";
+        c.font = "bold 14px Calibri, Arial, Sans-serif";
+        c.fillStyle = "#000";
+        c.fillText(j*10+i+1, 25 + i * 30, 55 + j * 30);
+      }
+    }
+    c.lineWidth = 2;
+    c.beginPath();
+    c.rect(195, 9, 58, 20);
+    c.stroke();
+    c.closePath();
+    c.lineWidth = 2;
+    c.beginPath();
+    c.rect(265, 9, 43, 20);
+    c.stroke();
+    c.closePath();
   }
 }
