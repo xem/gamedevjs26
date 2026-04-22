@@ -92,7 +92,7 @@ render = () => {
     
     // grey
     for(var i in cogs){
-      if(!cogs[i].fixed){
+      if(!cogs[i].fixed && cogs[i].color == "grey"){
         drawcog(cogs[i].x, cogs[i].y, (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, cogs[i].size, 0);
       }
     }

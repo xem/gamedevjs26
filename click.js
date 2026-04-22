@@ -108,6 +108,22 @@ onclick = (e) => {
       }
     }
     
+    // grey to inventory
+    for(var i in cogs){
+      if(!cogs[i].fixed && cogs[i].color == "grey"){
+        c.beginPath();
+        //c.fillStyle = "red";
+        c.arc(cogs[i].x, cogs[i].y, 15 + (cogs[i].size - 1) * 20 + (cogs[i].size == 5 ? 5 : 0), 0, 7);
+        //c.fill();
+        c.closePath();
+        if(c.isPointInPath(x, y)){
+          //console.log("clicked")
+          level["placed" + cogs[i].size]--;
+          cogs.splice(i, 1);
+        }
+      }
+    }
+    
     // place cog 1
     if(placing == "1"){
       radius = 25;

@@ -4,21 +4,21 @@
 -->
 <canvas id=a width=320 height=494></canvas>
 <div id=editor class=hidden>
-  # cogs size 1 <input type=number id=s1 size=1 value=0 min=0 max=10>
-  2 <input type=number id=s2 value=0 min=0 max=10>
-  3 <input type=number id=s3 value=0 min=0 max=10>
-  4 <input type=number id=s4 value=0 min=0 max=10>
-  5 <input type=number id=s5 value=0 min=0 max=10>
-  <br>
-  <button id=byellow style="background:yellow">L</button>
-  <button id=bblue1 style="background:#2ad">S</button>
-  <button id=bblue2 style="background:#2ad">M</button>
-  <button id=bblue3 style="background:#2ad">L</button>
-  <button id=bpinkcog style="background:pink">S</button> - 
-  <button id=bred style="background:red">Z</button>
-  <button id=bpink style="background:#F7F">Z</button> - 
+  1 <input type=number id=s1 size=1 value=0 min=0 max=9>
+  2 <input type=number id=s2 value=0 min=0 max=9>
+  3 <input type=number id=s3 value=0 min=0 max=9>
+  4 <input type=number id=s4 value=0 min=0 max=9>
+  5 <input type=number id=s5 value=0 min=0 max=9> - 
   <button id=btest>test</button>
   <button id=breset>reset</button>
+  
+  <br>
+  <button id=byellow style="background:yellow">L</button>
+  <button id=bblue1 style="background:#2ad">S</button><button id=bblue2 style="background:#2ad">M</button><button id=bblue3 style="background:#2ad">L</button>
+  <button id=bpinkcog style="background:pink">S</button>
+  <button id=borange style="background:orange">S</button>
+  <button id=bgrey1 style="background:#ccc">S</button><button id=bgrey2 style="background:#ccc">M</button><button id=bgrey3 style="background:#ccc">L</button>
+  <button id=bred style="background:red">Z</button><button id=bpink style="background:#F7F">Z</button> - 
   <button id=bshare>share</button>
   <button id=bexit>exit</button>
 </div>
@@ -35,11 +35,11 @@
 canvas { cursor: pointer; backgroundx: #edeeef; }
 body { text-align: center }
 input { width: 25px }
-#editor { line-height: 22px; margin-top: -48px; color: #fff; font-family: calibri, arial, sans-serif; }
-#editor button { min-width: 18px; height: 20px; vertical-align: top; }
+#editor { width: 320px; background: #000; line-height: 20px; margin: -48px auto; color: #fff; font-family: calibri, arial, sans-serif; }
+#editor button { min-width: 18px; height: 19px; line-height: 10px; vertical-align: middle; }
 #buttons { line-height: 22px; margin-top: -220px; height: 220px}
 button { padding: 2px; font-family: calibri, arial, sans-serif; cursor: pointer; }
-input { padding: 0; font-family: calibri, arial, sans-serif; }
+input { padding: 0; font-family: calibri, arial, sans-serif; font-size: 12px; }
 .hidden { display: none }
 #reset1, #undo1, #next1, #exit1 { width: 120px; border: 4px solid #000; background: #ddd; font: bold 30px calibri, arial, sans-serif; }
 #bottom { width: 320px; height: 40px; margin: 10px auto; }

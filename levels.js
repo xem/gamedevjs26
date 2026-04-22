@@ -83,7 +83,12 @@ levels = [
   }},
   
   // 6
-  {"n1":"0","n2":"1","n3":"1","n4":"0","n5":"0","yellow":[-4,208],"blue":[[322,208,55]],"red":[],"pink":[]},
+  {"n1":"0","n2":"1","n3":"0","n4":"0","n5":"0","yellow":[-4,208],"blue":[[322,208,55]],"grey":[[180, 385, 55]],"red":[],"pink":[],custom: () => {
+    c.fillStyle = "#000";
+    c.font = "bold 20px Calibri, Arial, sans-serif";
+    c.fillText("Click a grey cog to put it", 60,50);
+    c.fillText("in the inventory", 90,75);
+  }},
   
   // 7
   {"n1":"5","n2":"2","n3":"0","n4":"0","n5":"0","yellow":[-7,495],"blue":[[292,36,55]],"red":[],"pink":[]},

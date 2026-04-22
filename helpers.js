@@ -194,6 +194,14 @@ parselevel = () => {
     }
   }
   
+  if(level.grey){
+    for(var i in level.grey){
+      cogs.push({size: (level.grey[i][2]-15)/20+1, fixed: 0, color:"grey", rotation: 0, x: level.grey[i][0], y: level.grey[i][1], radius1: level.grey[i][2], radius2: level.grey[i][2]+10, neighbours: [], grounded: 1 });
+      level["placed"+cogs[cogs.length-1].size] ++;
+      level["n"+cogs[cogs.length-1].size] ++;
+    }
+  }
+  
   levelhistory = [JSON.stringify(level)];
   cogshistory = [JSON.stringify(cogs)];
   historylength = 0;
