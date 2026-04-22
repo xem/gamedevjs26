@@ -284,6 +284,13 @@ render = () => {
       }
     }
     
+    // grey
+    if(level.grey && level.grey.length){
+      for(var i in level.grey){
+        drawcog(level.grey[i][0],level.grey[i][1],0, (level.grey[i][2]-15)/20+1 , (placing == "grey" && collision && i == level.grey.length-1) ? 4 : 0);
+      }
+    }
+    
     // bottom
     c.fillStyle = "#000";
     c.fillRect(0,450,320,50);

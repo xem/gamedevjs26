@@ -328,6 +328,11 @@ onclick = (e) => {
       if(placing == "orange") { 
         placing = 0;
       }
+      
+      // grey
+      if(placing == "grey") { 
+        placing = 0;
+      }
 
       // red
       if(placing == "red") {

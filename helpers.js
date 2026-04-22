@@ -2,7 +2,7 @@
 // size: 1, 2, 3, 4, 5
 // radius: 15, 35, 55, 75, 105
 // teeth: 6, 12, 18, 24, 30
-// type: 0 grey, 1 yellow, 2 blue, 3 black, 4 red, 5: pink, 6: orange
+// type: 0 grey, 1 yellow, 2 blue, 3 black, 4 red, 5 pink, 6 orange
 // speed: 1, 1/2, 1/3, 1/4, 1/5
 drawcog = (x, y, angle = 0, size = 1, type = 0, scale = 1) => {
   c.save();

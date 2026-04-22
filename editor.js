@@ -16,7 +16,7 @@ btest.onclick = () => {
   page = 1;
   parselevel();
   editor.classList.add("hidden");
-  if(cogs.length < 2){
+  if(level.yellow.length == 0 || level.yellow.blue == 0){
     alert("Levels require at least one yellow cog and one blue cog");
     back = 2;
     page = 2;
@@ -44,6 +44,7 @@ breset.onclick = reseteditor = () => {
     pink: [],
     pinkcog: [],
     orange: [],
+    grey: [],
   }
 }
 
@@ -111,6 +112,39 @@ borange.onclick = () => {
   }
 }
 
+bgrey1.onclick = () => {
+  placing = "grey";
+  if(level.grey && level.grey.length > 0 && level.grey[level.grey.length-1][0] == 999){
+    // use the last blue slot if empty
+  }
+  else {
+    if(!level.grey)level.grey=[];
+    level.grey.push([999,999,15]); // new one
+  }
+}
+
+bgrey2.onclick = () => {
+  placing = "grey";
+  if(level.grey && level.grey.length > 0 && level.grey[level.grey.length-1][0] == 999){
+    // use the last blue slot if empty
+  }
+  else {
+    if(!level.grey)level.grey=[];
+    level.grey.push([999,999,35]); // new one
+  }
+}
+
+bgrey3.onclick = () => {
+  placing = "grey";
+  if(level.grey && level.grey.length > 0 && level.grey[level.grey.length-1][0] == 999){
+    // use the last blue slot if empty
+  }
+  else {
+    if(!level.grey)level.grey=[];
+    level.grey.push([999,999,55]); // new one
+  }
+}
+
 bred.onclick = () => {
   placing = "red";
 }
@@ -122,9 +156,12 @@ bpink.onclick = () => {
 }
 
 checkeditorcollisions = () => {
+
+  collision = 0;
+
   // blue radius is 15/35/55
   // yellow radius is 95
-  collision = 0;
+  /*
   
   // yellow 
   if(placing == "yellow"){
@@ -227,5 +264,5 @@ checkeditorcollisions = () => {
     level.pinkcog[level.pinkcog.length-1][2]
   )){
     collision = 1;
-  }
+  }*/
 }
