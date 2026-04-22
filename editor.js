@@ -43,6 +43,7 @@ breset.onclick = reseteditor = () => {
     red: [],
     pink: [],
     pinkcog: [],
+    orange: [],
   }
 }
 
@@ -96,6 +97,17 @@ bpinkcog.onclick = () => {
   else {
     if(!level.pinkcog)level.pinkcog=[];
     level.pinkcog.push([999,999,15]); // new one
+  }
+}
+
+borange.onclick = () => {
+  placing = "orange";
+  if(level.orange && level.orange.length > 0 && level.orange[level.orange.length-1][0] == 999){
+    // use the last blue slot if empty
+  }
+  else {
+    if(!level.orange)level.orange=[];
+    level.orange.push([999,999,15]); // new one
   }
 }
 

@@ -15,6 +15,9 @@ physics = () => {
       if(cogs[i].color == "grey"){
         cogs[i].grounded = 0;
       }
+      if(cogs[i].color == "orange"){
+        cogs[i].grounded = 0;
+      }
       if(cogs[i].color != "yellow"){
         cogs[i].rotation = 0;
       }
@@ -42,6 +45,14 @@ physics = () => {
               // ground (stop falling)
               cogs[i].grounded = 1;
             }
+            
+            // if orange and colliding and higher than neighbour:
+            if(cogs[i].color == "orange" && circlescollide(cogs[i].x, cogs[i].y, cogs[i].radius1+5, cogs[j].x, cogs[j].y, cogs[j].radius1+5, 1) && (cogs[i].y < cogs[j].y)){
+              
+              // ground (stop falling)
+              cogs[i].grounded = 1;
+            }
+            
           }
         }
       }
@@ -50,6 +61,21 @@ physics = () => {
     // let non grounded grey cogs fall
     for(i in cogs){
       if(cogs[i].color == "grey"){
+        if(cogs[i].y + cogs[i].radius2 >= 450){
+          cogs[i].grounded = 1;
+        }
+        if(!cogs[i].fixed && !cogs[i].grounded){
+          cogs[i].y ++;
+        }
+        if(cogs[i].neighbours.length > 1){
+          //console.log(i + " touches " + cogs[i].neighbours);
+        }
+      }
+    }
+    
+    // let non grounded orange cogs fall
+    for(i in cogs){
+      if(cogs[i].color == "orange"){
         if(cogs[i].y + cogs[i].radius2 >= 450){
           cogs[i].grounded = 1;
         }

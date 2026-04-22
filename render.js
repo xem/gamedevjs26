@@ -90,6 +90,15 @@ render = () => {
       }
     }
     
+    // orange
+    if(level.orange && level.orange.length){
+      for(var i in cogs){
+        if(cogs[i].color == "orange"){
+          drawcog(cogs[i].x,cogs[i].y, (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, 1, 6);
+        }
+      }
+    }
+    
     // grey
     for(var i in cogs){
       if(!cogs[i].fixed && cogs[i].color == "grey"){
@@ -265,6 +274,13 @@ render = () => {
     if(level.pinkcog && level.pinkcog.length){
       for(var i in level.pinkcog){
         drawcog(level.pinkcog[i][0],level.pinkcog[i][1],0,1, (placing == "pinkcog" && collision && i == level.pinkcog.length-1) ? 4 : 5);
+      }
+    }
+    
+    // orange
+    if(level.orange && level.orange.length){
+      for(var i in level.orange){
+        drawcog(level.orange[i][0],level.orange[i][1],0,1, (placing == "orange" && collision && i == level.orange.length-1) ? 4 : 6);
       }
     }
     

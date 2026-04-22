@@ -323,6 +323,11 @@ onclick = (e) => {
       if(placing == "pinkcog") { 
         placing = 0;
       }
+      
+      // orange
+      if(placing == "orange") { 
+        placing = 0;
+      }
 
       // red
       if(placing == "red") {

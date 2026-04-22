@@ -21,6 +21,7 @@ level = {
   red: [],
   pink: [],
   pinkcog: [],
+  orange: [],
 }
 placing = 0;
 pinkclick = 0;
