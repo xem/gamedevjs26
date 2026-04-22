@@ -53,6 +53,7 @@ onclick = (e) => {
         level = JSON.parse(levelhistory[historylength]);
         cogs = JSON.parse(cogshistory[historylength]);
         //console.log(cogshistory);
+        reset1.classList.add("hidden");
       }
     }
     

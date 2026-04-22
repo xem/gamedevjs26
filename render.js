@@ -69,7 +69,7 @@ render = () => {
   
     // yellow
     if(level.yellow.length){
-      drawcog(level.yellow[0], level.yellow[1], blocked ? Math.cos(blockedframes) * 10 : cogs[0].rotation == 1 ? -yellowangle : 0,5, 1);
+      drawcog(level.yellow[0], level.yellow[1], cogs[0].rotation == 0 ? Math.cos(blockedframes) * 10 : cogs[0].rotation == 1 ? -yellowangle : 0,5, 1);
     }
     
     // blue
@@ -163,7 +163,7 @@ render = () => {
     c.stroke();
     c.closePath();
     
-    if(blocked){
+    if(cogs[0].rotation == 0){
       messageframes++;
       blockedframes++;
       if(messageframes > 50){
@@ -176,17 +176,17 @@ render = () => {
         reset1.classList.remove("hidden");
         c.fillStyle = "#fff";
         c.font = "bold 60px Calibri, Arial, sans-serif";
-        c.fillText("COG-", 110-3, 200-3);
-        c.fillText("COG-", 110-3, 200+3);
-        c.fillText("COG-", 110+3, 200-3);
-        c.fillText("COG-", 110+3, 200+3);
+        c.fillText("COG-", 90-3, 200-3);
+        c.fillText("COG-", 90-3, 200+3);
+        c.fillText("COG-", 90+3, 200-3);
+        c.fillText("COG-", 90+3, 200+3);
         c.fillText("BLOCKED!", 25-3, 250-3);
         c.fillText("BLOCKED!", 25-3, 250+3);
         c.fillText("BLOCKED!", 25+3, 250-3);
         c.fillText("BLOCKED!", 25+3, 250+3);
         c.fillStyle = "#000";
         c.font = "bold 60px Calibri, Arial, sans-serif";
-        c.fillText("COG-", 110, 200);
+        c.fillText("COG-", 90, 200);
         c.fillText("BLOCKED!", 25, 250);
       //}, 500);
       }
@@ -214,7 +214,7 @@ render = () => {
         c.fillText("COG-", 110-3, 200+3);
         c.fillText("COG-", 110+3, 200+3);
         var messages = ["NUMENTAL", "RATULATIONS", "TASTIC", "BELIEVABLE", "SMICAL", "PLIMENTS", "XELLENT", "PRESSIVE", "STANDING", "MAZING", "SOME", "BULOUS", "STONISHING", "STACULAR", "TRAORDINARY", "BLOWING", "DERFUL", "RIFIC", "CEPTIONAL", "ENDARY", "PIC WIN", "TORY", "FECTION", "DROPPING", "MARKABLE", "NIFICENT", "LORIOUS", "LOSSAL", "RAZY", "SMIC", "WILDERING", "PREME", "CREDIBLE", "DING OVATION", "MINATION", "LORY", "ANTIC"];
-        var message = messages[currentlevel % messages.length];
+        var message = back == 2 ? "RATULATIONS" : messages[currentlevel % messages.length];
         c.textAlign = "center";
         c.fillText(message+"!", 160+3, 250+3);
         c.fillText(message+"!", 160-3, 250+3);
