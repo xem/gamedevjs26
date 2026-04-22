@@ -50,8 +50,9 @@ onclick = (e) => {
     if(c.isPointInPath(x,y)){
       if(historylength > 0){
         historylength--;
-        level = levelhistory[historylength];
-        cogs = cogshistory[historylength];
+        level = JSON.parse(levelhistory[historylength]);
+        cogs = JSON.parse(cogshistory[historylength]);
+        //console.log(cogshistory);
       }
     }
     
@@ -121,8 +122,8 @@ onclick = (e) => {
         
         
         historylength++;
-        levelhistory[historylength] = JSON.parse(JSON.stringify(level));
-        cogshistory[historylength] = JSON.parse(JSON.stringify(cogs));
+        levelhistory[historylength] = JSON.stringify(level);
+        cogshistory[historylength] = JSON.stringify(cogs);
       }
       else {
         placing = 0;
@@ -143,8 +144,8 @@ onclick = (e) => {
         placing = 0;
         
         historylength++;
-        levelhistory[historylength] = JSON.parse(JSON.stringify(level));
-        cogshistory[historylength] = JSON.parse(JSON.stringify(cogs));
+        levelhistory[historylength] = JSON.stringify(level);
+        cogshistory[historylength] = JSON.stringify(cogs);
       }
       else {
         placing = 0;
@@ -165,8 +166,8 @@ onclick = (e) => {
         placing = 0;
         
         historylength++;
-        levelhistory[historylength] = JSON.parse(JSON.stringify(level));
-        cogshistory[historylength] = JSON.parse(JSON.stringify(cogs));
+        levelhistory[historylength] = JSON.stringify(level);
+        cogshistory[historylength] = JSON.stringify(cogs);
         
       }
       else {
@@ -188,8 +189,8 @@ onclick = (e) => {
         placing = 0;
         
         historylength++;
-        levelhistory[historylength] = JSON.parse(JSON.stringify(level));
-        cogshistory[historylength] = JSON.parse(JSON.stringify(cogs));
+        levelhistory[historylength] = JSON.stringify(level);
+        cogshistory[historylength] = JSON.stringify(cogs);
       }
       else {
         placing = 0;
@@ -210,8 +211,8 @@ onclick = (e) => {
         placing = 0;
         
         historylength++;
-        levelhistory[historylength] = JSON.parse(JSON.stringify(level));
-        cogshistory[historylength] = JSON.parse(JSON.stringify(cogs));
+        levelhistory[historylength] = JSON.stringify(level);
+        cogshistory[historylength] = JSON.stringify(cogs);
       }
       else {
         placing = 0;

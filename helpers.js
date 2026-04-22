@@ -193,8 +193,8 @@ parselevel = () => {
     }
   }
   
-  levelhistory = [JSON.parse(JSON.stringify(level))];
-  cogshistory = [JSON.parse(JSON.stringify(cogs))];
+  levelhistory = [JSON.stringify(level)];
+  cogshistory = [JSON.stringify(cogs)];
   historylength = 0;
 }
 
