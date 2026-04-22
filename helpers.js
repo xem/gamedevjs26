@@ -190,7 +190,7 @@ parselevel = () => {
   
   if(level.pinkcog){
     for(var i in level.pinkcog){
-      cogs.push({size: 1, fixed: 1, color:"orange", rotation: 0, x: level.pinkcog[i][0], y: level.pinkcog[i][1], radius1:15, radius2: 25, neighbours: [], grounded: 1 });
+      cogs.push({size: 1, fixed: 1, color:"pink", rotation: 0, x: level.pinkcog[i][0], y: level.pinkcog[i][1], radius1:15, radius2: 25, neighbours: [], grounded: 1 });
     }
   }
   
