@@ -39,9 +39,9 @@ drawcog = (x, y, angle = 0, size = 1, type = 0, scale = 1) => {
     c.save();
     c.rotate((2 * Math.PI / teeth) * i + (angle * 1/size) / 100);
     c.translate(0, -25 - (size - 1) * 20 - (size == 5 ? 5 : 0));
-    c.fillRect(-6, -3, 12, 12);
+    c.fillRect(-6, 0, 12, 10);
     c.fillStyle = c.fillStyle = ["#ccc", "yellow", "#2ad", "black", "red", "pink"][type];
-    c.fillRect(-3, 0, 6, 12);
+    c.fillRect(-3, 3, 6, 10);
     c.restore();
   }
   c.restore();
@@ -145,6 +145,7 @@ parselevel = () => {
   exit1.classList.add("hidden");
   next1.classList.add("hidden");
   reset1.classList.add("hidden");
+  undo1.classList.add("hidden");
   buttons.classList.add("hidden");
 
   if(back == 0){

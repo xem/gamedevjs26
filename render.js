@@ -174,6 +174,7 @@ render = () => {
         c.globalAlpha = 1;
         buttons.classList.remove("hidden");
         reset1.classList.remove("hidden");
+        undo1.classList.remove("hidden");
         c.fillStyle = "#fff";
         c.font = "bold 60px Calibri, Arial, sans-serif";
         c.fillText("COG-", 90-3, 200-3);
@@ -213,16 +214,18 @@ render = () => {
         c.fillText("COG-", 110+3, 200-3);
         c.fillText("COG-", 110-3, 200+3);
         c.fillText("COG-", 110+3, 200+3);
-        var messages = ["NUMENTAL", "RATULATIONS", "TASTIC", "BELIEVABLE", "SMICAL", "PLIMENTS", "XELLENT", "PRESSIVE", "STANDING", "MAZING", "SOME", "BULOUS", "STONISHING", "STACULAR", "TRAORDINARY", "BLOWING", "DERFUL", "RIFIC", "CEPTIONAL", "ENDARY", "PIC WIN", "TORY", "FECTION", "DROPPING", "MARKABLE", "NIFICENT", "LORIOUS", "LOSSAL", "RAZY", "SMIC", "WILDERING", "PREME", "CREDIBLE", "DING OVATION", "MINATION", "LORY", "ANTIC"];
+        c.fillStyle = "#000";
+        c.fillText("COG-", 110, 200);
+        var messages = ["NUMENTAL", "RATULATIONS", "TASTIC", "BELIEVABLE", "SMICAL", "PLIMENTS", "XELLENT", "PRESSIVE", "STANDING", "MAZING", "WESOME", "BULOUS", "STONISHING", "STACULAR", "TRAORDINARY", "BLOWING", "DERFUL", "RIFIC", "CEPTIONAL", "ENDARY", "PIC WIN", "TORY", "FECTION", "DROPPING", "MARKABLE", "NIFICENT", "LORIOUS", "LOSSAL", "RAZY", "SMIC", "WILDERING", "PREME", "CREDIBLE", "DING OVATION", "MINATION", "IGANTIC"];
         var message = back == 2 ? "RATULATIONS" : messages[currentlevel % messages.length];
         c.textAlign = "center";
+        c.fillStyle = "#fff";
         c.fillText(message+"!", 160+3, 250+3);
         c.fillText(message+"!", 160-3, 250+3);
         c.fillText(message+"!", 160+3, 250-3);
         c.fillText(message+"!", 160-3, 250-3);
         c.fillStyle = "#000";
         c.font = "bold 45px Calibri, Arial, sans-serif";
-        c.fillText("COG-", 160, 200);
         c.fillText(message+"!", 160, 250);
         localStorage["cogs_"+currentlevel] = 1;
       //}, 500);
@@ -296,10 +299,18 @@ render = () => {
         c.lineWidth = 2;
         c.beginPath();
         c.rect(13 + i * 30, 38 + j * 30, 24, 24);
-        c.fillStyle = "#7F7";
         if(localStorage["cogs_"+(j*10+i+1)] == 1){
-          c.fill();
+          c.fillStyle = "#7F7";
         }
+        else {
+          if(localStorage["cogs_"+(j*10+i+1-5)] || (j*10+i+1 <= 5)){
+            c.fillStyle = "#fff";
+          }
+          else {
+            c.fillStyle = "#ccc";
+          }
+        }
+        c.fill();
         c.stroke();
         c.closePath();
         c.textAlign = "center";

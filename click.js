@@ -54,6 +54,8 @@ onclick = (e) => {
         cogs = JSON.parse(cogshistory[historylength]);
         //console.log(cogshistory);
         reset1.classList.add("hidden");
+        undo1.classList.add("hidden");
+        messageframes = 0;
       }
     }
     
@@ -366,10 +368,13 @@ onclick = (e) => {
         c.beginPath();
         c.rect(13 + i * 30, 38 + j * 30, 24, 24);
         if(c.isPointInPath(x,y)){
-          currentlevel = j*10+i+1;
-          page = 1;
-          back = 0;
-          parselevel();
+          
+          if(localStorage["cogs_"+(j*10+i+1)] == 1 || localStorage["cogs_"+(j*10+i+1-5)] == 1 || (j*10+i+1) <= 5){
+            currentlevel = j*10+i+1;
+            page = 1;
+            back = 0;
+            parselevel();
+          }
         }
       }
     }
@@ -400,6 +405,19 @@ reset1.onclick = () => {
   parselevel();
 }
 
+undo1.onclick = () => {
+  if(historylength > 0){
+    historylength--;
+    level = JSON.parse(levelhistory[historylength]);
+    cogs = JSON.parse(cogshistory[historylength]);
+    //console.log(cogshistory);
+    reset1.classList.add("hidden");
+    undo1.classList.add("hidden");
+    messageframes = 0;
+  }
+}
+
+
 next1.onclick = () => {
   currentlevel++;
   localStorage["cogs_currentlevel"] = currentlevel;
@@ -411,6 +429,7 @@ exit1.onclick = () => {
   exit1.classList.add("hidden");
   next1.classList.add("hidden");
   reset1.classList.add("hidden");
+  undo1.classList.add("hidden");
   buttons.classList.add("hidden");
   pinkposition = 0;
   blocked = 0;
