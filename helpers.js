@@ -19,7 +19,7 @@ drawcog = (x, y, angle = 0, size = 1, type = 0, scale = 1) => {
     c.save();
     c.rotate(-(angle * 1/size) / 2000);
     c.fillStyle = "#000";
-    c.font = "bold 20px calibri, arial, sans-serif";
+    c.font = "bold 20px Calibri, arial, sans-serif";
     c.textAlign = "center";
     c.fillText("LEVEL " + (currentlevel), 0, -74);
     c.rotate(Math.PI);

@@ -90,6 +90,16 @@ bblue3.onclick = () => {
   }
 }
 
+bblue4.onclick = () => {
+  placing = "blue";
+  if(level.blue.length > 0 && level.blue[level.blue.length-1][0] == 999){
+    // use the last blue slot if empty
+  }
+  else {
+    level.blue.push([999,999,75]); // new one
+  }
+}
+
 bpinkcog.onclick = () => {
   placing = "pinkcog";
   if(level.pinkcog && level.pinkcog.length > 0 && level.pinkcog[level.pinkcog.length-1][0] == 999){
