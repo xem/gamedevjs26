@@ -14,6 +14,17 @@ onmousemove = (e) => {
   // game
   if(page == 1){
     
+    // bottom line 
+    c.beginPath();
+    c.rect(0,450,320,50);
+    c.closePath();
+    if(c.isPointInPath(x, y)){
+      bottomcollision = 1;
+    }
+    else {
+      bottomcollision = 0;
+    }
+    
     // cog 1
     if(placing == "1"){
       radius = 25;

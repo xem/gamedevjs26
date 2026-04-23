@@ -5,6 +5,7 @@ currentlevel = 1; // 1-150
 c = 0;            // context2d
 md = 0;           // mousedown
 ingameframes = 0;
+bottomcollision = 0;
 
 // yellow angle
 yellowangle = 0;

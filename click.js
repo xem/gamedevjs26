@@ -116,7 +116,7 @@ onclick = (e) => {
         c.arc(cogs[i].x, cogs[i].y, 15 + (cogs[i].size - 1) * 20 + (cogs[i].size == 5 ? 5 : 0), 0, 7);
         //c.fill();
         c.closePath();
-        if(c.isPointInPath(x, y)){
+        if(c.isPointInPath(x, y) && placing == 0){
           //console.log("clicked")
           level["placed" + cogs[i].size]--;
           cogs.splice(i, 1);
@@ -131,7 +131,7 @@ onclick = (e) => {
       if(y < radius) y = radius;
       if(x > 320 - radius) x = 320 - radius;
       if(y > 450 - radius) y = 450 - radius;
-      if(!gamecollision(x,y,15)){
+      if(!gamecollision(x,y,15) && !bottomcollision){
         //console.log(x, y);
         cogs.push({size: 1, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 15, radius2: 25, neighbours: [], grounded: 0 });
         level.cogs1[level.cogs1.length-1] = [x, y];
@@ -143,10 +143,17 @@ onclick = (e) => {
         historylength++;
         levelhistory[historylength] = JSON.stringify(level);
         cogshistory[historylength] = JSON.stringify(cogs);
+        
+        if((level.n1 - level.placed1) > 0){
+          placing = "1";
+          level.placed1++;
+        }
       }
       else {
         placing = 0;
         level.placed1 --;
+        
+        
       }
     }
     
@@ -157,7 +164,7 @@ onclick = (e) => {
       if(y < radius) y = radius;
       if(x > 320 - radius) x = 320 - radius;
       if(y > 450 - radius) y = 450 - radius;
-      if(!gamecollision(x,y,35)){
+      if(!gamecollision(x,y,35) && !bottomcollision){
         cogs.push({size: 2, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 35, radius2: 45, neighbours: [], grounded: 0 });
         level.cogs2[level.cogs2.length-1] = [x, y];
         placing = 0;
@@ -165,6 +172,12 @@ onclick = (e) => {
         historylength++;
         levelhistory[historylength] = JSON.stringify(level);
         cogshistory[historylength] = JSON.stringify(cogs);
+        
+        if((level.n2 - level.placed2) > 0){
+          placing = "2";
+          level.placed2++;
+        }
+        
       }
       else {
         placing = 0;
@@ -179,7 +192,7 @@ onclick = (e) => {
       if(y < radius) y = radius;
       if(x > 320 - radius) x = 320 - radius;
       if(y > 450 - radius) y = 450 - radius;
-      if(!gamecollision(x,y,55)){
+      if(!gamecollision(x,y,55) && !bottomcollision){
         cogs.push({size: 3, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 55, radius2: 65, neighbours: [], grounded: 0 });
         level.cogs3[level.cogs3.length-1] = [x, y];
         placing = 0;
@@ -187,6 +200,11 @@ onclick = (e) => {
         historylength++;
         levelhistory[historylength] = JSON.stringify(level);
         cogshistory[historylength] = JSON.stringify(cogs);
+        
+        if((level.n3 - level.placed3) > 0){
+          placing = "3";
+          level.placed3++;
+        }
         
       }
       else {
@@ -202,7 +220,7 @@ onclick = (e) => {
       if(y < radius) y = radius;
       if(x > 320 - radius) x = 320 - radius;
       if(y > 450 - radius) y = 450 - radius;
-      if(!gamecollision(x,y,75)){
+      if(!gamecollision(x,y,75) && !bottomcollision){
         cogs.push({size: 4, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 75, radius2: 85, neighbours: [], grounded: 0 });
         level.cogs4[level.cogs4.length-1] = [x, y];
         placing = 0;
@@ -210,6 +228,11 @@ onclick = (e) => {
         historylength++;
         levelhistory[historylength] = JSON.stringify(level);
         cogshistory[historylength] = JSON.stringify(cogs);
+        
+        if((level.n4 - level.placed4) > 0){
+          placing = "1";
+          level.placed4++;
+        }
       }
       else {
         placing = 0;
@@ -224,7 +247,7 @@ onclick = (e) => {
       if(y < radius) y = radius;
       if(x > 320 - radius) x = 320 - radius;
       if(y > 450 - radius) y = 450 - radius;
-      if(!gamecollision(x,y,100)){
+      if(!gamecollision(x,y,100) && !bottomcollision){
         cogs.push({size: 5, fixed: 0, color:"grey", rotation: 0, x: x, y: y, radius1: 100, radius2: 110, neighbours: [], grounded: 0 });
         level.cogs5[level.cogs5.length-1] = [x, y];
         placing = 0;
@@ -232,6 +255,11 @@ onclick = (e) => {
         historylength++;
         levelhistory[historylength] = JSON.stringify(level);
         cogshistory[historylength] = JSON.stringify(cogs);
+        
+        if((level.n5 - level.placed5) > 0){
+          placing = "5";
+          level.placed5++;
+        }
       }
       else {
         placing = 0;
@@ -395,7 +423,15 @@ onclick = (e) => {
         c.rect(13 + i * 30, 38 + j * 30, 24, 24);
         if(c.isPointInPath(x,y)){
           
-          if(localStorage["cogs_"+(j*10+i+1)] == 1 || localStorage["cogs_"+(j*10+i+1-5)] == 1 || (j*10+i+1) <= 5){
+          if(
+            localStorage["cogs_"+(j*10+i+1)] == 1 
+            || localStorage["cogs_"+(j*10+i+1-1)] == 1 
+            || localStorage["cogs_"+(j*10+i+1-2)] == 1 
+            || localStorage["cogs_"+(j*10+i+1-3)] == 1 
+            || localStorage["cogs_"+(j*10+i+1-4)] == 1 
+            || localStorage["cogs_"+(j*10+i+1-5)] == 1 
+            || (j*10+i+1) <= 5
+          ){
             currentlevel = j*10+i+1;
             page = 1;
             back = 0;

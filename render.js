@@ -108,24 +108,24 @@ render = () => {
     
     // red (colliding) grey cogs being placed
     if(placing == "1") {
-      drawcog(level.cogs1[level.cogs1.length-1][0],level.cogs1[level.cogs1.length-1][1],0,1,level.cogs1[level.cogs1.length-1][3] ? 4 : 0);
+      drawcog(level.cogs1[level.cogs1.length-1][0],level.cogs1[level.cogs1.length-1][1],0,1,level.cogs1[level.cogs1.length-1][3] || bottomcollision ? 4 : 0);
     }
     if(placing == "2") {
-      drawcog(level.cogs2[level.cogs2.length-1][0],level.cogs2[level.cogs2.length-1][1],0,2,level.cogs2[level.cogs2.length-1][3] ? 4 : 0);
+      drawcog(level.cogs2[level.cogs2.length-1][0],level.cogs2[level.cogs2.length-1][1],0,2,level.cogs2[level.cogs2.length-1][3] || bottomcollision  ? 4 : 0);
     }
     if(placing == "3") {
-      drawcog(level.cogs3[level.cogs3.length-1][0],level.cogs3[level.cogs3.length-1][1],0,3,level.cogs3[level.cogs3.length-1][3] ? 4 : 0);
+      drawcog(level.cogs3[level.cogs3.length-1][0],level.cogs3[level.cogs3.length-1][1],0,3,level.cogs3[level.cogs3.length-1][3] || bottomcollision  ? 4 : 0);
     }
     if(placing == "4") {
-      drawcog(level.cogs4[level.cogs4.length-1][0],level.cogs4[level.cogs4.length-1][1],0,4,level.cogs4[level.cogs4.length-1][3] ? 4 : 0);
+      drawcog(level.cogs4[level.cogs4.length-1][0],level.cogs4[level.cogs4.length-1][1],0,4,level.cogs4[level.cogs4.length-1][3] || bottomcollision  ? 4 : 0);
     }
     if(placing == "5") {
       drawcog(
-        level.cogs5[level.cogs5.length-1][0],level.cogs5[level.cogs5.length-1][1],0,5,level.cogs5[level.cogs5.length-1][3] ? 4 : 0);
+        level.cogs5[level.cogs5.length-1][0],level.cogs5[level.cogs5.length-1][1],0,5,level.cogs5[level.cogs5.length-1][3] || bottomcollision  ? 4 : 0);
     }
     if(placing == "pinkcog") {
       drawcog(
-        level.pinkcog[level.pinkcog.length-1][0],level.pinkcog[level.pinkcog.length-1][1],0,1,level.pinkcog[level.pinkcog.length-1][3] ? 4 : 5);
+        level.pinkcog[level.pinkcog.length-1][0],level.pinkcog[level.pinkcog.length-1][1],0,1,level.pinkcog[level.pinkcog.length-1][3] || bottomcollision  ? 4 : 5);
     }
     
     // boxes
@@ -326,7 +326,14 @@ render = () => {
           c.fillStyle = "#7F7";
         }
         else {
-          if(localStorage["cogs_"+(j*10+i+1-5)] || (j*10+i+1 <= 5)){
+          if(
+            localStorage["cogs_"+(j*10+i+1-1)]
+            || localStorage["cogs_"+(j*10+i+1-2)]
+            || localStorage["cogs_"+(j*10+i+1-3)]
+            || localStorage["cogs_"+(j*10+i+1-4)]
+            || localStorage["cogs_"+(j*10+i+1-5)]
+            || (j*10+i+1 <= 5)
+          ){
             c.fillStyle = "#fff";
           }
           else {
