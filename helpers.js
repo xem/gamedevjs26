@@ -196,7 +196,7 @@ parselevel = () => {
   
   if(level.orange){
     for(var i in level.orange){
-      cogs.push({size: 1, fixed: 0, color:"orange", rotation: 0, x: level.orange[i][0], y: level.orange[i][1], radius1:15, radius2: 25, neighbours: [], grounded: 1 });
+      cogs.push({size: (level.orange[i][2]-15)/20+1, fixed: 0, color:"orange", rotation: 0, x: level.orange[i][0], y: level.orange[i][1], radius1:level.orange[i][2], radius2: level.orange[i][2]+10, neighbours: [], grounded: 1 });
     }
   }
   

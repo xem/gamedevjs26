@@ -49,7 +49,7 @@ blockedframes = 0;
 currentlevel = localStorage["cogs_currentlevel"] || 1;
 
 // tmp
-for(i = 1; i < 111; i++){
+for(i = 1; i <= 150; i++){
   tmp.innerHTML += "<button onclick='bg("+i+")'>"+i+"</button>";
 }
 

@@ -122,6 +122,17 @@ borange.onclick = () => {
   }
 }
 
+borange2.onclick = () => {
+  placing = "orange";
+  if(level.orange && level.orange.length > 0 && level.orange[level.orange.length-1][0] == 999){
+    // use the last blue slot if empty
+  }
+  else {
+    if(!level.orange)level.orange=[];
+    level.orange.push([999,999,35]); // new one
+  }
+}
+
 bgrey1.onclick = () => {
   placing = "grey";
   if(level.grey && level.grey.length > 0 && level.grey[level.grey.length-1][0] == 999){

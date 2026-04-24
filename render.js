@@ -32,7 +32,7 @@ render = () => {
     c.font = "bold 50px Calibri, Arial, sans-serif";
     c.fillText("PLAY", 25, 290);
     c.fillText("LEVELS", 65, 370);
-    c.fillText("EDITOR", 135, 455);
+    c.fillText("EDITOR", 125, 445);
     c.font = "17px Calibri, Arial, sans-serif";
     c.fillText("A tribute to 'Geared' for GamedevJS 2026", 20, 484);
     c.strokeStyle = "#000";
@@ -44,6 +44,15 @@ render = () => {
     if(currentlevel > 1){
       c.font = "25px Calibri, Arial, sans-serif";
       c.fillText("Level " + currentlevel, 27, 310);
+    }
+    if(isHandheld){
+      c.save();
+      c.translate(112,420);
+      c.rotate(0.06);
+      c.fillRect(0,0,175,5);
+      c.restore();
+      c.font = "15px Calibri, Arial, sans-serif";
+      c.fillText("(Desktop only, sorry)" , 137, 460);
     }
   }
   
@@ -94,7 +103,7 @@ render = () => {
     if(level.orange && level.orange.length){
       for(var i in cogs){
         if(cogs[i].color == "orange"){
-          drawcog(cogs[i].x,cogs[i].y, (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, 1, 6);
+          drawcog(cogs[i].x,cogs[i].y, (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, cogs[i].size, 6);
         }
       }
     }
@@ -280,7 +289,7 @@ render = () => {
     // orange
     if(level.orange && level.orange.length){
       for(var i in level.orange){
-        drawcog(level.orange[i][0],level.orange[i][1],0,1, (placing == "orange" && collision && i == level.orange.length-1) ? 4 : 6);
+        drawcog(level.orange[i][0],level.orange[i][1],0,(level.orange[i][2]-15)/20+1, (placing == "orange" && collision && i == level.orange.length-1) ? 4 : 6);
       }
     }
     
