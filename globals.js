@@ -67,8 +67,8 @@ bg = (i) => {
     //currentlevel = i;
     //parselevel();
     page = 2;
-    a.style.background = 'url("levels/'+i+'.png?3")';
-    bottom.style.background = 'url("levels/'+i+'.png?3")';
+    a.style.background = 'url("levels/'+i+'.png?4")';
+    bottom.style.background = 'url("levels/'+i+'.png?4")';
     a.style.backgroundSize = '320px auto';
     bottom.style.backgroundSize = '320px auto';
     bottom.style.backgroundPosition = 'bottom center';

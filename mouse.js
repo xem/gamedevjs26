@@ -7,8 +7,6 @@ onmouseup = () => {
 }
 
 onmousemove = (e) => {
-
-  if(isHandheld) return;
   
   var x = e.layerX - a.offsetLeft, y = e.layerY - a.offsetTop;
   //console.log(x,y);
@@ -16,7 +14,7 @@ onmousemove = (e) => {
   
   // game
   if(page == 1){
-    if(isHandheld) return;
+    if(isHandheld()) return;
     // bottom line 
     c.beginPath();
     c.rect(0,450,320,50);

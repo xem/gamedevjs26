@@ -45,7 +45,7 @@ render = () => {
       c.font = "25px Calibri, Arial, sans-serif";
       c.fillText("Level " + currentlevel, 27, 310);
     }
-    if(isHandheld){
+    if(isHandheld()){
       c.save();
       c.translate(112,420);
       c.rotate(0.06);

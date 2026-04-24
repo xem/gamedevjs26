@@ -42,7 +42,7 @@ onclick = (e) => {
   
   // game
   else if(page == 1 && ingameframes > 20){
-    if(isHandheld) return;
+    if(isHandheld()) return;
     // undo
     c.beginPath()
     c.rect(202, 455, 40, 40); // reset
