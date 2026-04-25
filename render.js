@@ -2,8 +2,11 @@
 render = () => {
 
   a.width ^= 0;
-  yellowangle+= 100;
-
+  
+  if(page != 1 || cogs[0].rotation){
+    yellowangle+= 100;
+  }
+  
   // grid
   for(var i = 0; i < 320; i += 10){
     c.globalAlpha = .2;
@@ -80,7 +83,7 @@ render = () => {
   
     // yellow
     if(level.yellow.length){
-      drawcog(level.yellow[0], level.yellow[1], cogs[0].rotation == 0 ? Math.cos(blockedframes) * 10 : cogs[0].rotation == 1 ? -yellowangle : 0,5, 1);
+      drawcog(level.yellow[0], level.yellow[1], cogs[0].rotation == 0 ? cogs[0].rotation == 1 ? yellowangle + Math.cos(blockedframes) * 10 : -yellowangle + Math.cos(blockedframes) * 10 : cogs[0].rotation == 1 ? -yellowangle : 0,5, 1);
     }
     
     // blue
@@ -186,7 +189,7 @@ render = () => {
     if(cogs[0].rotation == 0){
       messageframes++;
       blockedframes++;
-      if(messageframes > 50){
+      if(messageframes > 50 && currentlevel < 100){
       //setTimeout(()=>{
         c.globalAlpha = 0.7;
         c.fillStyle = "#def";
@@ -236,7 +239,7 @@ render = () => {
         c.fillText("COG-", 110+3, 200+3);
         c.fillStyle = "#000";
         c.fillText("COG-", 110, 200);
-        var messages = ["NUMENTAL", "RATULATIONS", "TASTIC", "BELIEVABLE", "SMICAL", "PLIMENTS", "XELLENT", "PRESSIVE", "STANDING", "MAZING", "WESOME", "BULOUS", "STONISHING", "STACULAR", "TRAORDINARY", "BLOWING", "DERFUL", "RIFIC", "CEPTIONAL", "ENDARY", "PIC WIN", "TORY", "FECTION", "DROPPING", "MARKABLE", "NIFICENT", "LORIOUS", "LOSSAL", "RAZY", "SMIC", "WILDERING", "PREME", "CREDIBLE", "DING OVATION", "MINATION", "IGANTIC"];
+        var messages = ["NUMENTAL", "RATULATIONS", "TASTIC", "BELIEVABLE", "SMICAL", "PLIMENTS", "CELLENT", "PRESSIVE", "STANDING", "MAZING", "WESOME", "BULOUS", "STONISHING", "STACULAR", "TRAORDINARY", "BLOWING", "DERFUL", "REKA", "RIFIC", "CEPTIONAL", "ENDARY", "PIC WIN", "TORY", "FECTION", "DROPPING", "MARKABLE", "NIFICENT", "LORIOUS", "LOSSAL", "RAZY", "SMIC", "WILDERING", "PREME", "CREDIBLE", "DING OVATION", "MINATION", "IGANTIC", "RAVO", "PLENDID", "OTCHA"];
         var message = back == 2 ? "RATULATIONS" : messages[currentlevel % messages.length];
         c.textAlign = "center";
         c.fillStyle = "#fff";

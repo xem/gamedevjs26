@@ -107,6 +107,7 @@ physics = () => {
             blocked = 1;
           }
           else {
+            cogs[0].rotation = 1;
             blocked = 0;
           }
           cogs[i].rotation = -globalneighbourangle;
@@ -117,6 +118,7 @@ physics = () => {
     // check victory
     won = 1;
     for(i in cogs){
+      if(cogs[0].rotation == 0) won = 0;
       if(cogs[i].color == "blue" && cogs[i].rotation == 0){
         won = 0;
       }

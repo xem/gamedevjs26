@@ -150,7 +150,8 @@ parselevel = () => {
   custom = levels[currentlevel].custom;
 
   if(back == 0){
-    level = levels[currentlevel];
+    level = JSON.parse(JSON.stringify(levels[currentlevel]));
+    level.custom = levels[currentlevel].custom;
   }
   
   // reset + string to int
