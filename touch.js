@@ -256,7 +256,7 @@ a.addEventListener("touchstart", (e) => {
 
 a.addEventListener("touchmove", (e) => {
   e.preventDefault();
-  var x = e.touches[0].pageX - a.offsetLeft, y = e.touches[0].pageY - a.offsetTop;
+  var x = e.touches[0].pageX - a.offsetLeft, y = e.touches[0].pageY - a.offsetTop - 30;
   //console.log("move", x, y);
  
   // game
@@ -351,7 +351,7 @@ a.addEventListener("touchmove", (e) => {
 
 a.addEventListener("touchend", (e) => {
   e.preventDefault();
-  var x = e.changedTouches[0].pageX - a.offsetLeft, y = e.changedTouches[0].pageY - a.offsetTop;
+  var x = e.changedTouches[0].pageX - a.offsetLeft, y = e.changedTouches[0].pageY - a.offsetTop - 30;
   //console.log("end", e);
   
   // game
