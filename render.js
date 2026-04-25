@@ -37,7 +37,7 @@ render = () => {
     c.fillText("LEVELS", 65, 370);
     c.fillText("EDITOR", 125, 445);
     c.font = "12px Calibri, Arial, sans-serif";
-    c.fillText("A tribute to 'Geared' made in 13 days for GamedevJS 2026", 20, 484);
+    //c.fillText("A tribute to 'Geared' made in 13 days for GamedevJS 2026", 20, 484);
     c.strokeStyle = "#000";
     c.lineWidth = 10;
     c.beginPath();
@@ -335,8 +335,15 @@ render = () => {
     c.rect(0,0,320,494);
     c.stroke();
     c.closePath();
-      for(var j = 0; j < 15; j++){
-    for(var i = 0; i < 10; i++){
+    for(var j = 0; j < 15; j++){
+      for(var i = 0; i < 10; i++){
+        if(levels.length - 1 < 120) {
+          c.textAlign = "center";
+          c.font = "normal 25px sans-serif";
+          c.fillStyle = "#000";
+          c.fillText("Connect your ETH wallet", 160, 430);
+          c.fillText("to unlock levels 120-150", 160, 450);
+        }
         if((j*10+i+1) > levels.length-1) return;
         c.lineWidth = 2;
         c.beginPath();
