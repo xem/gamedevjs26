@@ -166,6 +166,17 @@ bgrey3.onclick = () => {
   }
 }
 
+bgrey4.onclick = () => {
+  placing = "grey";
+  if(level.grey && level.grey.length > 0 && level.grey[level.grey.length-1][0] == 999){
+    // use the last blue slot if empty
+  }
+  else {
+    if(!level.grey)level.grey=[];
+    level.grey.push([999,999,75]); // new one
+  }
+}
+
 bred.onclick = () => {
   placing = "red";
 }
