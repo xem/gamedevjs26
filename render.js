@@ -337,7 +337,7 @@ render = () => {
     c.closePath();
     for(var j = 0; j < 15; j++){
       for(var i = 0; i < 10; i++){
-        if(levels.length - 1 < 120) {
+        if(levels.length - 1 < 121) {
           c.textAlign = "center";
           c.font = "normal 25px sans-serif";
           c.fillStyle = "#000";
