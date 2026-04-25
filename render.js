@@ -90,7 +90,7 @@ render = () => {
     if(level.blue.length){
       for(var i in cogs){
         if(cogs[i].color == "blue"){
-          drawcog(cogs[i].x,cogs[i].y, (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, cogs[i].size, 2);
+          drawcog(cogs[i].x,cogs[i].y, (cogs[i].rotation == 99) ? Math.cos(blockedframes) * 10 : (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, cogs[i].size, 2);
         }
       }
     }
@@ -99,7 +99,7 @@ render = () => {
     if(level.pinkcog && level.pinkcog.length){
       for(var i in cogs){
         if(cogs[i].color == "pink"){
-          drawcog(cogs[i].x,cogs[i].y, (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, 1, 5);
+          drawcog(cogs[i].x,cogs[i].y, (cogs[i].rotation == 99) ? Math.cos(blockedframes) * 10 : (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, 1, 5);
         }
       }
     }
@@ -108,7 +108,7 @@ render = () => {
     if(level.orange && level.orange.length){
       for(var i in cogs){
         if(cogs[i].color == "orange"){
-          drawcog(cogs[i].x,cogs[i].y, (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, cogs[i].size, 6);
+          drawcog(cogs[i].x,cogs[i].y, (cogs[i].rotation == 99) ? Math.cos(blockedframes) * 10 : (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, cogs[i].size, 6);
         }
       }
     }
@@ -116,7 +116,7 @@ render = () => {
     // grey
     for(var i in cogs){
       if(!cogs[i].fixed && cogs[i].color == "grey"){
-        drawcog(cogs[i].x, cogs[i].y, (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, cogs[i].size, 0);
+        drawcog(cogs[i].x, cogs[i].y, (cogs[i].rotation == 99) ? Math.cos(blockedframes) * 10 : (cogs[i].rotation == -1) ? yellowangle : (cogs[i].rotation == 1) ? -yellowangle : 0, cogs[i].size, 0);
       }
     }
     
@@ -189,7 +189,7 @@ render = () => {
     if(cogs[0].rotation == 0){
       messageframes++;
       blockedframes++;
-      if(messageframes > 50 && currentlevel < 100){
+      if(messageframes > 50 && (page == 1 && back == 0 && currentlevel < 100) && 0){
       //setTimeout(()=>{
         c.globalAlpha = 0.7;
         c.fillStyle = "#def";
