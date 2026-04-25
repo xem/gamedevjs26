@@ -147,6 +147,7 @@ parselevel = () => {
   reset1.classList.add("hidden");
   undo1.classList.add("hidden");
   buttons.classList.add("hidden");
+  custom = levels[currentlevel].custom;
 
   if(back == 0){
     level = levels[currentlevel];

@@ -1,9 +1,57 @@
-ontouchstart = (e) => {
+a.addEventListener("touchstart", (e) => {
+  e.preventDefault();
   var x = e.touches[0].pageX - a.offsetLeft, y = e.touches[0].pageY - a.offsetTop;
   //console.log("start", x, y);
   
+  // menu
+  if(page == 0){
+    
+    // play
+    c.beginPath();
+    c.rect(25, 250, 120, 70); // play
+    if(c.isPointInPath(x,y)){
+      back = 0;
+      page = 1;
+      parselevel();
+    }
+    //c.fill();
+    c.closePath();
+    
+    // levels
+    c.beginPath();
+    c.rect(65, 330, 150, 50); // levels
+    if(c.isPointInPath(x,y)){
+      back = 0;
+      page = 3;
+    }
+    //c.fill();
+    c.closePath();
+    
+    // editor
+    c.beginPath();
+    c.rect(135, 410, 160, 50); // editor
+    if(c.isPointInPath(x,y)){
+      if(isHandheld()){
+        c.save();
+        c.translate(112,420);
+        c.rotate(0.06);
+        c.fillRect(0,0,175,5);
+        c.restore();
+        c.font = "15px Calibri, Arial, sans-serif";
+        c.fillText("(Desktop only, sorry)" , 137, 460);
+        editorcrossed = 1;
+      }
+      else {
+        page = 2;
+        reseteditor();
+      }
+    }
+    //c.fill();
+    c.closePath();
+  }
+  
   // game
-  if(page == 1 && ingameframes > 20){
+  else if(page == 1 && ingameframes > 20){
     
     
     // undo
@@ -153,11 +201,59 @@ ontouchstart = (e) => {
       }
   }
   
-  
-  
-}
+  // levels
+  else if(page == 3){
+    
+    // levels
+    for(var i = 0; i < 10; i++){
+      for(var j = 0; j < 15; j++){
+        c.beginPath();
+        c.rect(13 + i * 30, 38 + j * 30, 24, 24);
+        if(c.isPointInPath(x,y)){
+          
+          if(
+            localStorage["cogs_"+(j*10+i+1)] == 1 
+            || localStorage["cogs_"+(j*10+i+1-1)] == 1 
+            || localStorage["cogs_"+(j*10+i+1-2)] == 1 
+            || localStorage["cogs_"+(j*10+i+1-3)] == 1 
+            || localStorage["cogs_"+(j*10+i+1-4)] == 1 
+            || localStorage["cogs_"+(j*10+i+1-5)] == 1 
+            || (j*10+i+1) <= 5
+            || levels[j*10+i+1].custom
+          ){
+            currentlevel = j*10+i+1;
+            page = 1;
+            back = 0;
+            parselevel();
+          }
+        }
+      }
+    }
+    
+    // reset
+    c.beginPath();
+    c.rect(195, 9, 58, 20);
+    c.closePath();
+    if(c.isPointInPath(x,y)){
+      if(confirm("All your progress will be lost")){
+        localStorage.clear();
+        currentlevel = 1;
+      }
+    }
 
-ontouchmove = (e) => {
+    // exit
+    c.beginPath();
+    c.rect(265, 9, 43, 20);
+    c.closePath();
+    if(c.isPointInPath(x,y)){
+      page = 0;
+    }
+  }
+  
+}, { passive: false });
+
+a.addEventListener("touchmove", (e) => {
+  e.preventDefault();
   var x = e.touches[0].pageX - a.offsetLeft, y = e.touches[0].pageY - a.offsetTop;
   //console.log("move", x, y);
  
@@ -249,9 +345,10 @@ ontouchmove = (e) => {
       }
     }
   }
-}
+}, { passive: false });
 
-ontouchend = (e) => {
+a.addEventListener("touchend", (e) => {
+  e.preventDefault();
   var x = e.changedTouches[0].pageX - a.offsetLeft, y = e.changedTouches[0].pageY - a.offsetTop;
   //console.log("end", e);
   
@@ -380,4 +477,4 @@ ontouchend = (e) => {
     }
     
   }
-}
+}, { passive: false });

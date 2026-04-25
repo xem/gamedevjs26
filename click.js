@@ -1,5 +1,6 @@
 onclick = (e) => {
 
+  if(isHandheld()) return;
   if(e.target.tagName == "BUTTON" || e.target.tagName == "INPUT") return;
   
   var x = e.layerX - a.offsetLeft, y = e.layerY - a.offsetTop;
@@ -54,7 +55,6 @@ onclick = (e) => {
   
   // game
   else if(page == 1 && ingameframes > 20){
-    if(isHandheld()) return;
     
     // undo
     c.beginPath()

@@ -64,8 +64,8 @@ render = () => {
     ingameframes++;
     
     // custom
-    if(level.custom){
-      level.custom();
+    if(custom){
+      custom();
     }
     
     // red
