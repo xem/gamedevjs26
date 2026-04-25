@@ -1,6 +1,6 @@
 ontouchstart = (e) => {
   var x = e.touches[0].pageX - a.offsetLeft, y = e.touches[0].pageY - a.offsetTop;
-  console.log("start", x, y);
+  //console.log("start", x, y);
   
   // game
   if(page == 1 && ingameframes > 20){
@@ -159,7 +159,7 @@ ontouchstart = (e) => {
 
 ontouchmove = (e) => {
   var x = e.touches[0].pageX - a.offsetLeft, y = e.touches[0].pageY - a.offsetTop;
-  console.log("move", x, y);
+  //console.log("move", x, y);
  
   // game
   if(page == 1){
@@ -253,7 +253,7 @@ ontouchmove = (e) => {
 
 ontouchend = (e) => {
   var x = e.changedTouches[0].pageX - a.offsetLeft, y = e.changedTouches[0].pageY - a.offsetTop;
-  console.log("end", e);
+  //console.log("end", e);
   
   // game
   if(page == 1){
@@ -277,11 +277,7 @@ ontouchend = (e) => {
         historylength++;
         levelhistory[historylength] = JSON.stringify(level);
         cogshistory[historylength] = JSON.stringify(cogs);
-        
-        if((level.n1 - level.placed1) > 0){
-          placing = "1";
-          level.placed1++;
-        }
+
       }
       else {
         placing = 0;
@@ -307,11 +303,6 @@ ontouchend = (e) => {
         levelhistory[historylength] = JSON.stringify(level);
         cogshistory[historylength] = JSON.stringify(cogs);
         
-        if((level.n2 - level.placed2) > 0){
-          placing = "2";
-          level.placed2++;
-        }
-        
       }
       else {
         placing = 0;
@@ -334,11 +325,6 @@ ontouchend = (e) => {
         historylength++;
         levelhistory[historylength] = JSON.stringify(level);
         cogshistory[historylength] = JSON.stringify(cogs);
-        
-        if((level.n3 - level.placed3) > 0){
-          placing = "3";
-          level.placed3++;
-        }
         
       }
       else {
@@ -363,10 +349,6 @@ ontouchend = (e) => {
         levelhistory[historylength] = JSON.stringify(level);
         cogshistory[historylength] = JSON.stringify(cogs);
         
-        if((level.n4 - level.placed4) > 0){
-          placing = "1";
-          level.placed4++;
-        }
       }
       else {
         placing = 0;
@@ -390,10 +372,6 @@ ontouchend = (e) => {
         levelhistory[historylength] = JSON.stringify(level);
         cogshistory[historylength] = JSON.stringify(cogs);
         
-        if((level.n5 - level.placed5) > 0){
-          placing = "5";
-          level.placed5++;
-        }
       }
       else {
         placing = 0;

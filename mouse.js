@@ -8,6 +8,9 @@ onmouseup = () => {
 
 onmousemove = (e) => {
   
+  if(level["placed"+placing] > level["n"+placing]){
+    //placing = 0;
+  }
   var x = e.layerX - a.offsetLeft, y = e.layerY - a.offsetTop;
   //console.log(x,y);
   var radius;

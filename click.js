@@ -55,12 +55,14 @@ onclick = (e) => {
   // game
   else if(page == 1 && ingameframes > 20){
     if(isHandheld()) return;
+    
     // undo
     c.beginPath()
-    c.rect(202, 455, 40, 40); // reset
+    c.rect(202, 455, 40, 40);
     c.closePath();
     if(c.isPointInPath(x,y)){
       if(historylength > 0){
+        //console.log(levelhistory);
         historylength--;
         level = JSON.parse(levelhistory[historylength]);
         cogs = JSON.parse(cogshistory[historylength]);
@@ -68,12 +70,14 @@ onclick = (e) => {
         reset1.classList.add("hidden");
         undo1.classList.add("hidden");
         messageframes = 0;
+        placing = 0;
+        return;
       }
     }
     
     // reset
     c.beginPath()
-    c.rect(5+40*6, 455, 40, 40); // reset
+    c.rect(5+40*6, 455, 40, 40);
     c.closePath();
     if(c.isPointInPath(x,y)){
       level.placed1 = 0,
@@ -342,6 +346,10 @@ onclick = (e) => {
           level.placed5++;
         }
       }
+    }
+    
+    if(level["placed"+placing] > level["n"+placing]){
+      //placing = 0;
     }
   }
   
