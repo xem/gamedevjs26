@@ -258,7 +258,7 @@ onclick = (e) => {
         cogshistory[historylength] = JSON.stringify(cogs);
         
         if((level.n4 - level.placed4) > 0){
-          placing = "1";
+          placing = "4";
           level.placed4++;
         }
       }

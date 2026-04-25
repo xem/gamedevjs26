@@ -357,8 +357,10 @@ render = () => {
     for(var j = 0; j < 15; j++){
       for(var i = 0; i < 10; i++){
         if(levels.length - 1 < 121) {
+          c.fillStyle = "#fff";
+          c.fillRect(30, 410, 270, 70);
           c.textAlign = "center";
-          c.font = "normal 25px sans-serif";
+          c.font = "bold 20px Calibri, Arial, Sans-serif";
           c.fillStyle = "#000";
           c.fillText("Connect your ETH wallet", 160, 430);
           c.fillText("to unlock levels 120-150", 160, 450);
