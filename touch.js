@@ -1,6 +1,6 @@
 a.addEventListener("touchstart", (e) => {
   music.play();
-  music.volume = 0.2;
+  music.volume = 0.1;
   e.preventDefault();
   var x = e.touches[0].pageX - a.offsetLeft, y = e.touches[0].pageY - a.offsetTop;
   //console.log("start", x, y);

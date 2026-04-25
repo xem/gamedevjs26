@@ -50,7 +50,7 @@ render = () => {
     
     if(currentlevel > 1){
       c.font = "25px Calibri, Arial, sans-serif";
-      c.fillText("Level " + currentlevel, 27, 310);
+      //c.fillText("Level " + currentlevel, 27, 310);
     }
     
     if(editorcrossed){
@@ -255,6 +255,25 @@ render = () => {
         c.font = "bold 45px Calibri, Arial, sans-serif";
         c.fillText(message+"!", 160, 250);
         localStorage["cogs_"+currentlevel] = 1;
+        if(window.Wavedash){
+          Wavedash.uploadLeaderboardScore("SCORE", currentlevel, true);
+          
+          if(currentlevel == 1){
+            Wavedash.setAchievement("TRY_THE_GAME");
+          }
+          
+          if(currentlevel == 120){
+            Wavedash.setAchievement("FINISH_GAME");
+          }
+          
+          if(currentlevel == 150){
+            Wavedash.setAchievement("COMPLETIONIST");
+          }
+          
+          if(currentlevel == 106){
+            Wavedash.setAchievement("NINJA");
+          }
+        }
       //}, 500);
       }
     }

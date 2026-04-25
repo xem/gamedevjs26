@@ -1,7 +1,7 @@
 onclick = (e) => {
   
   music.play();
-  music.volume = 0.2;
+  music.volume = 0.1;
 
   if(isHandheld()) return;
   if(e.target.tagName == "BUTTON" || e.target.tagName == "INPUT") return;
