@@ -34,6 +34,7 @@ back = 0;
 levelhistory = [];
 cogshistory = [];
 historylength = 0;
+editorcrossed = 0;
 
 
 //back = 2;

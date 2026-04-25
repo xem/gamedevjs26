@@ -30,11 +30,11 @@ render = () => {
     drawcog(320,330,0,4,0);
     drawcog(58,430,0,1,2);
     c.font = "bold 50px Calibri, Arial, sans-serif";
-    c.fillText("PLAY", 25, 290);
+    c.fillText("PLAY", 25, (currentlevel > 1) ? 290: 300);
     c.fillText("LEVELS", 65, 370);
     c.fillText("EDITOR", 125, 445);
-    c.font = "17px Calibri, Arial, sans-serif";
-    c.fillText("A tribute to 'Geared' for GamedevJS 2026", 20, 484);
+    c.font = "12px Calibri, Arial, sans-serif";
+    c.fillText("A tribute to 'Geared' made in 13 days for GamedevJS 2026", 20, 484);
     c.strokeStyle = "#000";
     c.lineWidth = 10;
     c.beginPath();
@@ -45,7 +45,8 @@ render = () => {
       c.font = "25px Calibri, Arial, sans-serif";
       c.fillText("Level " + currentlevel, 27, 310);
     }
-    if(isHandheld()){
+    
+    if(editorcrossed){
       c.save();
       c.translate(112,420);
       c.rotate(0.06);
@@ -54,6 +55,7 @@ render = () => {
       c.font = "15px Calibri, Arial, sans-serif";
       c.fillText("(Desktop only, sorry)" , 137, 460);
     }
+    
   }
   
   // game
@@ -335,7 +337,12 @@ render = () => {
           c.fillStyle = "#7F7";
         }
         else {
-          if(
+          
+          if(levels[j*10+i+1].custom){
+            c.fillStyle = "#def";
+          }
+          
+          else if(
             localStorage["cogs_"+(j*10+i+1-1)]
             || localStorage["cogs_"+(j*10+i+1-2)]
             || localStorage["cogs_"+(j*10+i+1-3)]

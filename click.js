@@ -33,8 +33,20 @@ onclick = (e) => {
     c.beginPath();
     c.rect(135, 410, 160, 50); // editor
     if(c.isPointInPath(x,y)){
-      page = 2;
-      reseteditor();
+      if(isHandheld()){
+        c.save();
+        c.translate(112,420);
+        c.rotate(0.06);
+        c.fillRect(0,0,175,5);
+        c.restore();
+        c.font = "15px Calibri, Arial, sans-serif";
+        c.fillText("(Desktop only, sorry)" , 137, 460);
+        editorcrossed = 1;
+      }
+      else {
+        page = 2;
+        reseteditor();
+      }
     }
     //c.fill();
     c.closePath();
@@ -431,6 +443,7 @@ onclick = (e) => {
             || localStorage["cogs_"+(j*10+i+1-4)] == 1 
             || localStorage["cogs_"+(j*10+i+1-5)] == 1 
             || (j*10+i+1) <= 5
+            || levels[j*10+i+1].custom
           ){
             currentlevel = j*10+i+1;
             page = 1;
@@ -448,6 +461,7 @@ onclick = (e) => {
     if(c.isPointInPath(x,y)){
       if(confirm("All your progress will be lost")){
         localStorage.clear();
+        currentlevel = 1;
       }
     }
 
