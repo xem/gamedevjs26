@@ -49,7 +49,7 @@ breset.onclick = reseteditor = () => {
 }
 
 bshare.onclick = () => {
-  prompt("Share level", JSON.stringify(level));
+  prompt("Share level (make sure to select all the text)", location.href + "#" + btoa(JSON.stringify(level)));
 }
 
 bexit.onclick = () => {

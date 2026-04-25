@@ -44,6 +44,10 @@ render = () => {
     c.rect(0,0,320,494);
     c.stroke();
     c.closePath();
+    
+    if(currentlevel > levels.length-1) currentlevel = levels.length - 1;
+    //console.log(currentlevel);
+    
     if(currentlevel > 1){
       c.font = "25px Calibri, Arial, sans-serif";
       c.fillText("Level " + currentlevel, 27, 310);
@@ -189,7 +193,7 @@ render = () => {
     if(cogs[0].rotation == 0){
       messageframes++;
       blockedframes++;
-      if(messageframes > 50 && (page == 1 && back == 0 && currentlevel < 100) && 0){
+      if(messageframes > 50 && (page == 1 && back == 0 && currentlevel < 100)){
       //setTimeout(()=>{
         c.globalAlpha = 0.7;
         c.fillStyle = "#def";
@@ -331,8 +335,9 @@ render = () => {
     c.rect(0,0,320,494);
     c.stroke();
     c.closePath();
-    for(var i = 0; i < 10; i++){
       for(var j = 0; j < 15; j++){
+    for(var i = 0; i < 10; i++){
+        if((j*10+i+1) > levels.length-1) return;
         c.lineWidth = 2;
         c.beginPath();
         c.rect(13 + i * 30, 38 + j * 30, 24, 24);
@@ -341,7 +346,7 @@ render = () => {
         }
         else {
           
-          if(levels[j*10+i+1].custom){
+          if(levels[j*10+i+1]?.custom){
             c.fillStyle = "#def";
           }
           

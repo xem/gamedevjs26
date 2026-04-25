@@ -51,7 +51,7 @@ blockedframes = 0;
 currentlevel = localStorage["cogs_currentlevel"] || 1;
 
 // tmp
-for(i = 1; i <= 150; i++){
+/*for(i = 1; i <= 150; i++){
   tmp.innerHTML += "<button onclick='bg("+i+")'>"+i+"</button>";
 }
 
@@ -75,4 +75,4 @@ bg = (i) => {
     bottom.style.backgroundSize = '320px auto';
     bottom.style.backgroundPosition = 'bottom center';
   }
-}
+}*/

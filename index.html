@@ -28,7 +28,7 @@ body { text-align: center; font-family: Calibri; font-weight: bold; overflow: hi
 input { width: 25px }
 #editor { width: 320px; background: #000; line-height: 20px; margin: -48px auto; color: #fff; font-family: calibri, arial, sans-serif; font-weight: normal; }
 #editor button { min-width: 15px; height: 19px; line-height: 10px; vertical-align: middle; font-size:12px;}
-#buttons { line-height: 22px; margin-top: -220px; height: 220px}
+#buttons { line-height: 22px; margin-top: -300px; height: 220px}
 button { padding: 1px; font-family: calibri, arial, sans-serif; cursor: pointer; }
 input { padding: 0; font-family: calibri, arial, sans-serif; font-size: 12px; }
 .hidden { display: none }
@@ -60,7 +60,7 @@ input { padding: 0; font-family: calibri, arial, sans-serif; font-size: 12px; }
 </div>
 <div id=tmp>
 </div>
-
+<audio src=music.mp3 id=music volume="0.5" autoplay loop hidden>
 
 <script src=globals.js></script>
 <script src=helpers.js></script>
@@ -101,5 +101,15 @@ function isHandheld() {
   if (/macintosh/.test(ua) && navigator.maxTouchPoints > 1)
     return true;
   return false;
+}
+
+hashlevel = 0;
+if(location.hash.length > 1){
+  hashlevel = JSON.parse(atob(location.hash.slice(1)));
+  level = hashlevel;
+  page = 1;
+  back = 2;
+  parselevel();
+  location.hash = "";
 }
 </script>

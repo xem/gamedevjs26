@@ -1,4 +1,7 @@
 onclick = (e) => {
+  
+  music.play();
+  music.volume = 0.2;
 
   if(isHandheld()) return;
   if(e.target.tagName == "BUTTON" || e.target.tagName == "INPUT") return;
@@ -80,11 +83,20 @@ onclick = (e) => {
     c.rect(5+40*6, 455, 40, 40);
     c.closePath();
     if(c.isPointInPath(x,y)){
-      level.placed1 = levels[currentlevel].placed1,
-      level.placed2 = levels[currentlevel].placed2,
-      level.placed3 = levels[currentlevel].placed3,
-      level.placed4 = levels[currentlevel].placed4,
-      level.placed5 = levels[currentlevel].placed5,
+      if(hashlevel){
+        level.placed1 = hashlevel.placed1,
+        level.placed2 = hashlevel.placed2,
+        level.placed3 = hashlevel.placed3,
+        level.placed4 = hashlevel.placed4,
+        level.placed5 = hashlevel.placed5;
+      }
+      else {
+        level.placed1 = levels[currentlevel].placed1,
+        level.placed2 = levels[currentlevel].placed2,
+        level.placed3 = levels[currentlevel].placed3,
+        level.placed4 = levels[currentlevel].placed4,
+        level.placed5 = levels[currentlevel].placed5;
+      }
       level.cogs1 = [],
       level.cogs2 = [],
       level.cogs3 = [],
