@@ -29,7 +29,7 @@ onclick = (e) => {
     if(c.isPointInPath(x,y)){
       back = 0;
       page = 3;
-      if(levels.length < 150){
+      if(levels.length < 130 && !unlocked150){
         eth.classList.remove("hidden");
       }
     }

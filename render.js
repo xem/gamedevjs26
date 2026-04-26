@@ -356,7 +356,7 @@ render = () => {
     c.closePath();
     for(var j = 0; j < 15; j++){
       for(var i = 0; i < 10; i++){
-        if(levels.length - 1 < 121) {
+        if(levels.length - 1 < 130 && !unlocked150) {
           c.fillStyle = "#fff";
           c.fillRect(30, 410, 270, 70);
           c.textAlign = "center";
@@ -365,7 +365,7 @@ render = () => {
           //c.fillText("Connect your ETH wallet", 160, 430);
           //c.fillText("to unlock levels 120-150", 160, 450);
         }
-        if((j*10+i+1) > levels.length-1) return;
+        if((j*10+i+1) > levels.length-1 && !unlocked150) return;
         c.lineWidth = 2;
         c.beginPath();
         c.rect(13 + i * 30, 38 + j * 30, 24, 24);

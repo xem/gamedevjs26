@@ -286,19 +286,21 @@ async function connect_eth_wallet() {
     }
 
     try {
-        // Demande la connexion au wallet
         const accounts = await window.ethereum.request({
             method: "eth_requestAccounts"
         });
 
         const address = accounts[0];
         status.textContent = "Connected: " + address;
-
-        // 🔓 Débloque ton contenu
         unlock_levels(address);
 
     } catch (error) {
         console.error(error);
         status.textContent = "Connection failed or rejected.";
     }
+}
+
+unlock_levels = () => {
+  unlocked150 = true;
+  eth.classList.add("hidden");
 }

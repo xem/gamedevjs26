@@ -36,6 +36,7 @@ cogshistory = [];
 historylength = 0;
 editorcrossed = 0;
 custom = 0;
+unlocked150 = false;
 
 
 //back = 2;
