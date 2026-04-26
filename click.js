@@ -474,6 +474,7 @@ onclick = (e) => {
             page = 1;
             back = 0;
             parselevel();
+            eth.classList.add("hidden");
           }
         }
       }

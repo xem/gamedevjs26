@@ -71,7 +71,7 @@ render = () => {
     ingameframes++;
     
     // custom
-    if(custom){
+    if(custom && back != 2){
       custom();
     }
     
