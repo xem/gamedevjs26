@@ -50,7 +50,7 @@ render = () => {
     
     if(currentlevel > 1){
       c.font = "25px Calibri, Arial, sans-serif";
-      //c.fillText("Level " + currentlevel, 27, 310);
+      c.fillText("Level " + currentlevel, 27, 310);
     }
     
     if(editorcrossed){
