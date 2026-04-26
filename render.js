@@ -362,8 +362,8 @@ render = () => {
           c.textAlign = "center";
           c.font = "bold 20px Calibri, Arial, Sans-serif";
           c.fillStyle = "#000";
-          c.fillText("Connect your ETH wallet", 160, 430);
-          c.fillText("to unlock levels 120-150", 160, 450);
+          //c.fillText("Connect your ETH wallet", 160, 430);
+          //c.fillText("to unlock levels 120-150", 160, 450);
         }
         if((j*10+i+1) > levels.length-1) return;
         c.lineWidth = 2;

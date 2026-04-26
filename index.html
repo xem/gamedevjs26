@@ -28,7 +28,8 @@ body { text-align: center; font-family: Calibri; font-weight: bold; overflow: hi
 input { width: 25px }
 #editor { width: 320px; background: #000; line-height: 20px; margin: -48px auto; color: #fff; font-family: calibri, arial, sans-serif; font-weight: normal; }
 #editor button { min-width: 15px; height: 19px; line-height: 10px; vertical-align: middle; font-size:12px;}
-#buttons { line-height: 22px; margin-top: -300px; height: 220px}
+#buttons { line-height: 22px; margin-top: -300px; height: 220px; }
+#eth { line-height: 22px; margin-top: -180px; height: 220px; }
 button { padding: 1px; font-family: calibri, arial, sans-serif; cursor: pointer; position: relative; z-index: 100; color: #000; }
 input { padding: 0; font-family: calibri, arial, sans-serif; font-size: 12px; }
 .hidden { display: none }
@@ -58,6 +59,10 @@ input { padding: 0; font-family: calibri, arial, sans-serif; font-size: 12px; }
   <button id=next1 class=hidden>NEXT</button>
   <button id=exit1 class=hidden>EXIT</button>
 </div>
+<div id=eth class=hidden>
+  <button onclick="connect_eth_wallet()">Connect your ETH wallet to unlock levels 121-150!</button>
+  <p id="eth_status">waiting for connection...</p>
+</div>
 <div id=tmp>
 </div>
 <audio src=music.mp3 id=music volume="0.2" autoplay loop hidden>
@@ -71,6 +76,7 @@ input { padding: 0; font-family: calibri, arial, sans-serif; font-size: 12px; }
 <script src=physics.js></script>
 <script src=levels.js></script>
 <script src=touch.js></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
 <script src=//xem.github.io/gamedevjs26/otherlevels.js></script>
 <script>
 

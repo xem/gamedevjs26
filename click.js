@@ -29,6 +29,9 @@ onclick = (e) => {
     if(c.isPointInPath(x,y)){
       back = 0;
       page = 3;
+      if(levels.length < 150){
+        eth.classList.remove("hidden");
+      }
     }
     //c.fill();
     c.closePath();
@@ -493,6 +496,7 @@ onclick = (e) => {
     c.closePath();
     if(c.isPointInPath(x,y)){
       page = 0;
+      eth.classList.add("hidden");
     }
   }
   

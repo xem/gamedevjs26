@@ -276,3 +276,29 @@ gamecollision = (x,y,radius) => {
   }
   return 0;
 }
+
+async function connect_eth_wallet() {
+    const status = document.getElementById("eth_status");
+
+    if (typeof window.ethereum === "undefined") {
+        status.textContent = "No wallet detected. Install MetaMask.";
+        return;
+    }
+
+    try {
+        // Demande la connexion au wallet
+        const accounts = await window.ethereum.request({
+            method: "eth_requestAccounts"
+        });
+
+        const address = accounts[0];
+        status.textContent = "Connected: " + address;
+
+        // 🔓 Débloque ton contenu
+        unlock_levels(address);
+
+    } catch (error) {
+        console.error(error);
+        status.textContent = "Connection failed or rejected.";
+    }
+}
