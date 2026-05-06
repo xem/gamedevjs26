@@ -106,7 +106,7 @@ onclick = (e) => {
       level.cogs4 = [],
       level.cogs5 = [];
       cogs = [];
-      parselevel();
+      parselevel(true);
     }
 
     // exit
@@ -484,6 +484,7 @@ onclick = (e) => {
             || levels[j*10+i+1].custom
           ){
             currentlevel = j*10+i+1;
+            localStorage["cogs_currentlevel"] = j*10+i+1;
             page = 1;
             back = 0;
             parselevel();
@@ -518,7 +519,7 @@ onclick = (e) => {
 }
 
 reset1.onclick = () => {
-  parselevel();
+  parselevel(true);
 }
 
 undo1.onclick = () => {

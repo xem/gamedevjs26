@@ -1,5 +1,7 @@
 // render
 render = () => {
+  
+  levelframes++;
 
   a.width ^= 0;
   
@@ -72,6 +74,7 @@ render = () => {
   
   // game
   else if(page == 1){
+
     
     ingameframes++;
     
@@ -226,6 +229,9 @@ render = () => {
     }
     
     if(won){
+      if(currentlevel == 120) {
+        unlock_levels();
+      }
       messageframes++;
       if(messageframes > 70){
         
@@ -287,6 +293,31 @@ render = () => {
         }
       }
     }
+    
+    // Level number
+        
+    /*if(levelframes < 60 && back != 2){
+      if(levelframes > 20) {
+        c.globalAlpha = (40-(levelframes-20))/40;
+      }
+      c.fillStyle = "#000";
+      c.fillRect(0,0,320,500);
+      c.fillStyle = "#FFF";
+      c.textAlign = "center";
+      c.font = "bold 60px Calibri, Arial, sans-serif";
+      c.fillText("Level " + currentlevel , 160,250);
+      c.textAlign = "left";
+    }*/
+
+    if(back != 2 && currentlevel != 151){
+      c.globalAlpha = 0.3;
+      c.fillStyle = "#000";
+      //c.fillRect(0,0,320,500);
+      c.font = "bold 30px Calibri, Arial, sans-serif";
+      c.fillText("#" + currentlevel , 10,30);
+    }
+
+
 
 
   }

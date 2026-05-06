@@ -134,7 +134,7 @@ drawpink = () => {
 }
 
 // parse level
-parselevel = () => {
+parselevel = (skiplevelnumber) => {
   
   placing = 0;
   blocked = 0;
@@ -213,6 +213,9 @@ parselevel = () => {
   levelhistory = [JSON.stringify(level)];
   cogshistory = [JSON.stringify(cogs)];
   historylength = 0;
+  if(back != 2 && !skiplevelnumber){
+    levelframes = 0;
+  }
 }
 
 circlescollide = (x1, y1, r1, x2, y2, r2) => {

@@ -72,7 +72,12 @@ levels = [
   }},
   
   // 4
-  {"n1":"0","n2":"0","n3":"1","n4":"0","n5":"0","yellow":[50,207],"blue":[[324,205,55]],"red":[],"pink":[]},
+  {"n1":"0","n2":"0","n3":"1","n4":"0","n5":"0","yellow":[50,207],"blue":[[324,205,55]],"red":[],"pink":[],custom: () => {
+    c.fillStyle = "#000";
+    c.font = "bold 16px Calibri, Arial, sans-serif";
+    c.fillText("A cog will only stop falling if it touches ", 30,370+20);
+    c.fillText("another cog placed lower, or the ground.", 25,390+20);
+  }},
   
   // 5
   {"n1":"0","n2":"5","n3":"0","n4":"0","n5":"0","yellow":[-4,495],"blue":[[299,-3,55]],"red":[],"pink":[],custom: () => {

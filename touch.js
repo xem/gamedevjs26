@@ -88,7 +88,7 @@ a.addEventListener("touchstart", (e) => {
       level.cogs4 = [],
       level.cogs5 = [];
       cogs = [];
-      parselevel();
+      parselevel(true);
     }
 
     // exit
@@ -230,6 +230,7 @@ a.addEventListener("touchstart", (e) => {
             || levels[j*10+i+1].custom
           ){
             currentlevel = j*10+i+1;
+            localStorage["cogs_currentlevel"] = j*10+i+1;
             page = 1;
             back = 0;
             parselevel();

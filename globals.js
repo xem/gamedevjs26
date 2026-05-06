@@ -49,6 +49,7 @@ blocked = 0;
 won = 0;
 messageframes = 0;
 blockedframes = 0;
+levelframes = 0;
 currentlevel = localStorage["cogs_currentlevel"] || 1;
 
 // tmp
