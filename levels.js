@@ -91,8 +91,8 @@ levels = [
   {"n1":"0","n2":"1","n3":"0","n4":"0","n5":"0","yellow":[-4,208],"blue":[[322,208,55]],"grey":[[180, 385, 55]],"red":[],"pink":[],custom: () => {
     c.fillStyle = "#000";
     c.font = "bold 17px Calibri, Arial, sans-serif";
-    c.fillText((isHandheld() ? "Touch" : "Click") + " a grey cog to grab and move it.", 30,40);
-    c.fillText("To get rid of a cog, put it in the inventory.", 15,60);
+    c.fillText((isHandheld() ? "Touch" : "Click") + " a grey cog to grab and move it.", 30,60);
+    c.fillText("To get rid of a cog, put it in the inventory.", 15,80);
   }},
   
   // 7
@@ -396,7 +396,7 @@ levels = [
     c.fillStyle = "#000";
     c.font = "bold 20px Calibri, Arial, sans-serif";
     c.fillText("Avoid these gears", 90,115);
-    c.fillText("they will jam the machine", 50,250);
+    c.fillText("They will jam the machine", 50,250);
   }},
 
   // 95
@@ -418,7 +418,7 @@ levels = [
   {"n1":"5","n2":"0","n3":"0","n4":"0","n5":"0","yellow":[161,449],"blue":[[111,256,15],[211,256,15],[46,99,15],[274,99,15]],"red":[[30,242,261,128]],"pink":[],"pinkcog":[],"orange":[[160,84,15],[159,27,15]],"grey":[[161,169,35]],custom: () => {
     c.fillStyle = "#000";
     c.font = "bold 20px Calibri, Arial, sans-serif";
-    c.fillText("Orange cogs can't be removed", 30,45);
+    c.fillText("Orange cogs can't be removed", 30,50);
     c.fillText("but they can fall", 100,70);
   }},
 

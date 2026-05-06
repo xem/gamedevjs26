@@ -309,12 +309,19 @@ render = () => {
       c.textAlign = "left";
     }*/
 
-    if(back != 2 && currentlevel != 151){
-      c.globalAlpha = 0.3;
-      c.fillStyle = "#000";
+    if(back != 2 && currentlevel != 151 && currentlevel != 1){
+      c.globalAlpha = 0.6;
+      c.fillStyle = "#fff";
+      c.textAlign = "left";
       //c.fillRect(0,0,320,500);
       c.font = "bold 30px Calibri, Arial, sans-serif";
-      c.fillText("#" + currentlevel , 10,30);
+      c.fillText("#" + currentlevel , 8,30);
+      c.fillText("#" + currentlevel , 12,34);
+      c.fillStyle = "#000";
+      c.textAlign = "left";
+      //c.fillRect(0,0,320,500);
+      c.font = "bold 30px Calibri, Arial, sans-serif";
+      c.fillText("#" + currentlevel , 10,32);
     }
 
 
