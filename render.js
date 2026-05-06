@@ -250,7 +250,7 @@ render = () => {
           c.fillStyle = "#000";
           c.fillText("COG-", 110, 200);
           var messages = ["NUMENTAL", "RATULATIONS", "TASTIC", "BELIEVABLE", "SMICAL", "PLIMENTS", "CELLENT", "PRESSIVE", "STANDING", "MAZING", "WESOME", "BULOUS", "STONISHING", "STACULAR", "TRAORDINARY", "BLOWING", "DERFUL", "REKA", "RIFIC", "CEPTIONAL", "ENDARY", "PIC WIN", "TORY", "FECTION", "DROPPING", "MARKABLE", "NIFICENT", "LORIOUS", "LOSSAL", "RAZY", "SMIC", "WILDERING", "PREME", "CREDIBLE", "DING OVATION", "MINATION", "IGANTIC", "RAVO", "PLENDID", "OTCHA"];
-          var message = back == 2 ? "RATULATIONS" : messages[currentlevel % messages.length];
+          var message = back == 2 ? "RATULATIONS" : (currentlevel == 106 ? "NINJA" : (messages[currentlevel % messages.length]));
           c.textAlign = "center";
           c.fillStyle = "#fff";
           c.fillText(message+"!", 160+3, 250+3);
