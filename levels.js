@@ -85,9 +85,9 @@ levels = [
   // 6
   {"n1":"0","n2":"1","n3":"0","n4":"0","n5":"0","yellow":[-4,208],"blue":[[322,208,55]],"grey":[[180, 385, 55]],"red":[],"pink":[],custom: () => {
     c.fillStyle = "#000";
-    c.font = "bold 20px Calibri, Arial, sans-serif";
-    c.fillText("Click a grey cog to put it", 60,50);
-    c.fillText("in the inventory", 90,75);
+    c.font = "bold 17px Calibri, Arial, sans-serif";
+    c.fillText((isHandheld() ? "Touch" : "Click") + " a grey cog to grab and move it.", 30,40);
+    c.fillText("To get rid of a cog, put it in the inventory.", 15,60);
   }},
   
   // 7

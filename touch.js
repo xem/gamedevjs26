@@ -131,8 +131,14 @@ a.addEventListener("touchstart", (e) => {
         c.closePath();
         if(c.isPointInPath(x, y) && placing == 0){
           //console.log("clicked")
-          level["placed" + cogs[i].size]--;
+          //level["placed" + cogs[i].size]--;
+          var tmp = cogs[i].size;
           cogs.splice(i, 1);
+          
+          //level["placed" + tmp]--;
+          level["cogs"+tmp].push([x,y]);
+          placing = "" + tmp;
+          return;
         }
       }
     }

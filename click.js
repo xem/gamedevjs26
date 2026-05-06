@@ -149,11 +149,19 @@ onclick = (e) => {
         c.closePath();
         if(c.isPointInPath(x, y) && placing == 0){
           //console.log("clicked")
-          level["placed" + cogs[i].size]--;
+          var tmp = cogs[i].size;
           cogs.splice(i, 1);
+          
+          //level["placed" + tmp]--;
+          level["cogs"+tmp].push([x,y]);
+          placing = "" + tmp;
+          return;
+          
         }
       }
     }
+    
+    
     
     // place cog 1
     if(placing == "1"){
@@ -313,6 +321,7 @@ onclick = (e) => {
           level.cogs1.push([999,999]);
           placing = "1";
           level.placed1++;
+          messageframes = 0;
         }
       }
       
@@ -325,6 +334,7 @@ onclick = (e) => {
           level.cogs2.push([999,999]);
           placing = "2";
           level.placed2++;
+          messageframes = 0;
         }
       }
 
@@ -337,6 +347,7 @@ onclick = (e) => {
           level.cogs3.push([999,999]);
           placing = "3";
           level.placed3++;
+          messageframes = 0;
         }
       }
 
@@ -349,6 +360,7 @@ onclick = (e) => {
           level.cogs4.push([999,999]);
           placing = "4";
           level.placed4++;
+          messageframes = 0;
         }
       }
 
@@ -361,6 +373,7 @@ onclick = (e) => {
           level.cogs5.push([999,999]);
           placing = "5";
           level.placed5++;
+          messageframes = 0;
         }
       }
     //}
