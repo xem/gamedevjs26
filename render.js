@@ -50,7 +50,12 @@ render = () => {
     
     if(currentlevel > 1){
       c.font = "25px Calibri, Arial, sans-serif";
-      c.fillText("Level " + currentlevel, 27, 310);
+      if(currentlevel < 151){
+        c.fillText("Level " + currentlevel, 27, 310);
+      }
+      else {
+        c.fillText("Credits", 27, 310);
+      }
     }
     
     if(editorcrossed){
@@ -223,58 +228,63 @@ render = () => {
     if(won){
       messageframes++;
       if(messageframes > 70){
-      //setTimeout(()=>{
-        c.globalAlpha = 0.7;
-        c.fillStyle = "#def";
-        c.fillRect(5,5,320-10,450-9);
-        c.globalAlpha = 1;
-        buttons.classList.remove("hidden");
-        if(back == 2){
-          exit1.classList.remove("hidden");
+        
+        if(currentlevel < 150){
+          c.globalAlpha = 0.7;
+          c.fillStyle = "#def";
+          c.fillRect(5,5,320-10,450-9);
+          c.globalAlpha = 1;
+          buttons.classList.remove("hidden");
+          if(back == 2){
+            exit1.classList.remove("hidden");
+          }
+          else {
+            next1.classList.remove("hidden");
+          }
+          c.fillStyle = "#fff";
+          c.font = "bold 45px Calibri, Arial, sans-serif";
+          c.fillText("COG-", 110-3, 200-3);
+          c.fillText("COG-", 110+3, 200-3);
+          c.fillText("COG-", 110-3, 200+3);
+          c.fillText("COG-", 110+3, 200+3);
+          c.fillStyle = "#000";
+          c.fillText("COG-", 110, 200);
+          var messages = ["NUMENTAL", "RATULATIONS", "TASTIC", "BELIEVABLE", "SMICAL", "PLIMENTS", "CELLENT", "PRESSIVE", "STANDING", "MAZING", "WESOME", "BULOUS", "STONISHING", "STACULAR", "TRAORDINARY", "BLOWING", "DERFUL", "REKA", "RIFIC", "CEPTIONAL", "ENDARY", "PIC WIN", "TORY", "FECTION", "DROPPING", "MARKABLE", "NIFICENT", "LORIOUS", "LOSSAL", "RAZY", "SMIC", "WILDERING", "PREME", "CREDIBLE", "DING OVATION", "MINATION", "IGANTIC", "RAVO", "PLENDID", "OTCHA"];
+          var message = back == 2 ? "RATULATIONS" : messages[currentlevel % messages.length];
+          c.textAlign = "center";
+          c.fillStyle = "#fff";
+          c.fillText(message+"!", 160+3, 250+3);
+          c.fillText(message+"!", 160-3, 250+3);
+          c.fillText(message+"!", 160+3, 250-3);
+          c.fillText(message+"!", 160-3, 250-3);
+          c.fillStyle = "#000";
+          c.font = "bold 45px Calibri, Arial, sans-serif";
+          c.fillText(message+"!", 160, 250);
+          localStorage["cogs_"+currentlevel] = 1;
+          if(window.Wavedash){
+            Wavedash.uploadLeaderboardScore("SCORE", currentlevel, true);
+            
+            if(currentlevel == 1){
+              Wavedash.setAchievement("TRY_THE_GAME");
+            }
+            
+            if(currentlevel == 120){
+              Wavedash.setAchievement("FINISH_GAME");
+            }
+            
+            if(currentlevel == 150){
+              Wavedash.setAchievement("COMPLETIONIST");
+            }
+            
+            if(currentlevel == 106){
+              Wavedash.setAchievement("NINJA");
+            }
+          }
         }
         else {
-          next1.classList.remove("hidden");
+          page = 0;
+          eth.classList.add("hidden");
         }
-        c.fillStyle = "#fff";
-        c.font = "bold 45px Calibri, Arial, sans-serif";
-        c.fillText("COG-", 110-3, 200-3);
-        c.fillText("COG-", 110+3, 200-3);
-        c.fillText("COG-", 110-3, 200+3);
-        c.fillText("COG-", 110+3, 200+3);
-        c.fillStyle = "#000";
-        c.fillText("COG-", 110, 200);
-        var messages = ["NUMENTAL", "RATULATIONS", "TASTIC", "BELIEVABLE", "SMICAL", "PLIMENTS", "CELLENT", "PRESSIVE", "STANDING", "MAZING", "WESOME", "BULOUS", "STONISHING", "STACULAR", "TRAORDINARY", "BLOWING", "DERFUL", "REKA", "RIFIC", "CEPTIONAL", "ENDARY", "PIC WIN", "TORY", "FECTION", "DROPPING", "MARKABLE", "NIFICENT", "LORIOUS", "LOSSAL", "RAZY", "SMIC", "WILDERING", "PREME", "CREDIBLE", "DING OVATION", "MINATION", "IGANTIC", "RAVO", "PLENDID", "OTCHA"];
-        var message = back == 2 ? "RATULATIONS" : messages[currentlevel % messages.length];
-        c.textAlign = "center";
-        c.fillStyle = "#fff";
-        c.fillText(message+"!", 160+3, 250+3);
-        c.fillText(message+"!", 160-3, 250+3);
-        c.fillText(message+"!", 160+3, 250-3);
-        c.fillText(message+"!", 160-3, 250-3);
-        c.fillStyle = "#000";
-        c.font = "bold 45px Calibri, Arial, sans-serif";
-        c.fillText(message+"!", 160, 250);
-        localStorage["cogs_"+currentlevel] = 1;
-        if(window.Wavedash){
-          Wavedash.uploadLeaderboardScore("SCORE", currentlevel, true);
-          
-          if(currentlevel == 1){
-            Wavedash.setAchievement("TRY_THE_GAME");
-          }
-          
-          if(currentlevel == 120){
-            Wavedash.setAchievement("FINISH_GAME");
-          }
-          
-          if(currentlevel == 150){
-            Wavedash.setAchievement("COMPLETIONIST");
-          }
-          
-          if(currentlevel == 106){
-            Wavedash.setAchievement("NINJA");
-          }
-        }
-      //}, 500);
       }
     }
 
