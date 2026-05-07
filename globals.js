@@ -51,6 +51,7 @@ messageframes = 0;
 blockedframes = 0;
 levelframes = 0;
 currentlevel = localStorage["cogs_currentlevel"] || 1;
+messageblocked = localStorage["cogs_messageblocked"] || 0;
 
 // tmp
 /*for(i = 1; i <= 150; i++){

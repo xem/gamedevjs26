@@ -520,6 +520,7 @@ onclick = (e) => {
 
 reset1.onclick = () => {
   parselevel(true);
+  messageblocked = localStorage["cogs_messageblocked"] = 1;
 }
 
 undo1.onclick = () => {
@@ -531,6 +532,7 @@ undo1.onclick = () => {
     reset1.classList.add("hidden");
     undo1.classList.add("hidden");
     messageframes = 0;
+    messageblocked = localStorage["cogs_messageblocked"] = 1;
   }
 }
 

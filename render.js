@@ -203,27 +203,30 @@ render = () => {
       blockedframes++;
       if(messageframes > 50 && (page == 1 && back == 0 && currentlevel < 100)){
       //setTimeout(()=>{
-        c.globalAlpha = 0.7;
-        c.fillStyle = "#def";
-        c.fillRect(5,5,320-10,450-9);
-        c.globalAlpha = 1;
-        buttons.classList.remove("hidden");
-        reset1.classList.remove("hidden");
-        undo1.classList.remove("hidden");
-        c.fillStyle = "#fff";
-        c.font = "bold 60px Calibri, Arial, sans-serif";
-        c.fillText("COG-", 90-3, 200-3);
-        c.fillText("COG-", 90-3, 200+3);
-        c.fillText("COG-", 90+3, 200-3);
-        c.fillText("COG-", 90+3, 200+3);
-        c.fillText("BLOCKED!", 25-3, 250-3);
-        c.fillText("BLOCKED!", 25-3, 250+3);
-        c.fillText("BLOCKED!", 25+3, 250-3);
-        c.fillText("BLOCKED!", 25+3, 250+3);
-        c.fillStyle = "#000";
-        c.font = "bold 60px Calibri, Arial, sans-serif";
-        c.fillText("COG-", 90, 200);
-        c.fillText("BLOCKED!", 25, 250);
+        if(messageblocked == 0){
+          c.globalAlpha = 0.7;
+          c.fillStyle = "#def";
+          c.fillRect(5,5,320-10,450-9);
+          c.globalAlpha = 1;
+          buttons.classList.remove("hidden");
+          reset1.classList.remove("hidden");
+          undo1.classList.remove("hidden");
+          c.fillStyle = "#fff";
+          c.font = "bold 60px Calibri, Arial, sans-serif";
+          c.fillText("COG-", 90-3, 200-3);
+          c.fillText("COG-", 90-3, 200+3);
+          c.fillText("COG-", 90+3, 200-3);
+          c.fillText("COG-", 90+3, 200+3);
+          c.fillText("BLOCKED!", 25-3, 250-3);
+          c.fillText("BLOCKED!", 25-3, 250+3);
+          c.fillText("BLOCKED!", 25+3, 250-3);
+          c.fillText("BLOCKED!", 25+3, 250+3);
+          c.fillStyle = "#000";
+          c.font = "bold 60px Calibri, Arial, sans-serif";
+          c.fillText("COG-", 90, 200);
+          c.fillText("BLOCKED!", 25, 250);
+        }
+        
       //}, 500);
       }
     }
@@ -317,6 +320,8 @@ render = () => {
       c.font = "bold 30px Calibri, Arial, sans-serif";
       c.fillText("#" + currentlevel , 8,30);
       c.fillText("#" + currentlevel , 12,34);
+      c.fillText("#" + currentlevel , 8,34);
+      c.fillText("#" + currentlevel , 12,30);
       c.fillStyle = "#000";
       c.textAlign = "left";
       //c.fillRect(0,0,320,500);
